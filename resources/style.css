@@ -20,7 +20,6 @@ h3{
     color:#262626
 }
 
-
 header{
     display: flex;
     justify-content: space-between;
@@ -35,9 +34,8 @@ header{
 nav {
     display: flex;
     align-items: center;
-    width: 35%;
-    justify-content: space-around;
-    margin-right: 10px;
+    width: 50%;
+    justify-content: flex-end;
 }
 
 nav ul {
@@ -46,7 +44,25 @@ nav ul {
 
 nav li{
     display:inline-block;
-    padding-right: 20px;
+    font-weight: bold;
+    width: 120px;
+}
+
+nav li a{
+    color: lightgray;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+nav li a:hover{
+    opacity: 0.8;
+    color: whitesmoke;
+    text-decoration: underline;
+    text-shadow: 1px 1px rgba(211, 211, 211, 0.432);
+    font-size: larger;
 }
 
 .block{
@@ -85,6 +101,7 @@ nav li{
     margin-top: 15px;
     transition: opacity 1s;
     border-radius: 50%;
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.781);
 }
 
 #headshot img:hover{
@@ -93,8 +110,12 @@ nav li{
 
 #about-me h2, p {
 text-align: center;
-
 }
+
+#about-me p{
+    line-height:1.3em;
+}
+
 
 .project-column{
     display: flex;
@@ -106,13 +127,13 @@ text-align: center;
     border-right: 2px solid black;
     transition: opacity 0.4s;
     opacity: 1;
+    transition: opacity 0.5s, box-shadow .5s, transform 1s;
 }
 
 .project-column:hover{
     opacity: 0.85;
-    transition: opacity 0.5s, box-shadow .5s;
     box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.781);
-    
+    transform: ease-in-out;
 }
 
 .skills-column,
@@ -219,12 +240,15 @@ text-align: center;
     width: 80px;
     padding: 10px;
     border-radius: 50%;
+    transition: opacity 0.5s, box-shadow .5s, transform 1s;
 }
 
 #gmail img:hover,
 #github img:hover,
 #linkedin img:hover{
     opacity: 0.75;
+    transform: ease-in-out;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.781);
 }
 
 .skill-list{
@@ -237,4 +261,10 @@ text-align: center;
 .footer h5{
     text-align: center;
     width: 100%;
+}
+
+h6{
+    background-color: black;
+    width:1px;
+
 }
