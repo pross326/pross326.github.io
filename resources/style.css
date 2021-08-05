@@ -27,6 +27,7 @@ header{
     width: 100%;
 }
 
+
 .title{
     color: #f5f5f5;
 }
@@ -43,7 +44,7 @@ nav ul {
 }
 
 nav li{
-    display:inline-block;
+    display:flex;
     font-weight: bold;
     width: 120px;
 }
@@ -70,6 +71,7 @@ nav li a:hover{
     display: flex;
     justify-content: space-evenly;
 }
+
 
 .first-block{
     height: 340px;
@@ -164,7 +166,7 @@ text-align: center;
 
 .image-5 img{
     width: 100%;
-    height: 90%;
+    height: 92%;
 }
 
 .image-6 img{
@@ -233,12 +235,17 @@ text-align: center;
     
 }
 
+#linkedin{
+    display: flex;
+}
+
+
 #gmail img,
 #github img,
 #linkedin img{
     height: 80px;
     width: 80px;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     transition: opacity 0.5s, box-shadow .5s, transform 1s;
 }
@@ -268,3 +275,7 @@ h6{
     width:1px;
 
 }
+
+
+
+
