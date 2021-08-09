@@ -164,3 +164,132 @@ nav li a:hover{
     text-align: center;
     width: 100%;
 }
+
+
+/* ------------- MEDIA QUERY ------------*/
+
+
+@media (max-width: 425px) {
+
+    header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 30%;
+        width: 100%;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav ul {
+        display: flex;
+        width: 200%;
+        justify-content: space-evenly;
+        margin-right: 10%;
+    }
+
+    .block-one, .block-two {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .project-column{
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+}
+
+@media (max-width: 375px) {
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: center;
+        margin-right: 6%;
+    }
+
+    nav li {
+        display: flex;
+        font-weight: bold;
+        width: 85px;
+        height: 36px;
+        flex-direction: column;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
+    }
+
+    .block-one, .block-two {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .project-column{
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    nav li{
+        display:flex;
+        font-weight: bold;
+        width: 75px;
+        height: 36px;
+        flex-direction: column;
+    
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: center;
+        margin-right: 10%;
+    }
+    .title {
+        color: #003D52;
+        font-size: 150%;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
+    }
+
+    .block-one, .block-two {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .project-column{
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+    #Projects{
+        font-size: 2rem;
+    }
+
+    .project-column h3{
+        font-size: 1.5rem;
+    }
+
+}
+
