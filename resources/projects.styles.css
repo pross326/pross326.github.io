@@ -92,23 +92,22 @@ nav li a:hover{
     margin-top: 5%;
 }
 
-
-
 .project-column{
     border-radius: 41px;
     background: #a0c7e3;
-    box-shadow: 9px 9px 18px #6d879a, -9px -9px 18px #d3ffff;
+    box-shadow: 9px 9px 10px #6d879a, -9px -9px 18px #d3ffff;
     width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90%;
     transition: opacity 0.5s, box-shadow .5s, transform 1s;
+    justify-content: space-around;
+    opacity: 0.95;
 }
 
 .project-column:hover{
-    opacity: 0.9;
-    box-shadow: 2px 2px 3px 3px #001829;
+    opacity: 0.87;
+    box-shadow: 2px 3px  #001829;
     transform: ease-in-out;
 }
 
@@ -124,41 +123,41 @@ nav li a:hover{
     line-height: 1.4em;
 }
 
-#project-1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .image-1 img{
     width: 100%;
-    height: 100%;
+    height: 210px;
 }
 
 .image-2 img{
     width: 100%;
-    height: 95%;
+    height: 210px;
 }
 
 .image-3 img{
     width: 100%;
-    height: 93%;
+    height: 210px;
 }
 
 .image-4 img{
     width: 100%;
-    height: 90%;
+    height: 210px;
 }
 
 .image-5 img{
     width: 100%;
-    height: 92%;
+    height: 210px;
+}
+
+.image-6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .image-6 img{
     width: 100%;
-    height: 82%;
+    height: 210px;
 }
 
 .footer h5{
