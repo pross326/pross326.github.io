@@ -6,24 +6,22 @@
 
 body{
     width: 80%;
-    display: flex;
-    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    background-image: url("./images/about.blob.svg");
-    background-repeat: no-repeat;
-    background-position: cover;
 }
-
 
 p, h2,h3, li{
     color: #262626;
 }
 
+h3{
+    color:#262626
+}
+
 header{
     display: flex;
     justify-content: space-between;
-    height: 30%;
+    height: 20%;
     width: 100%;
 }
 
@@ -79,60 +77,91 @@ nav li a:hover{
     text-shadow: 1px 1px rgba(211, 211, 211, 0.432);
 }
 
-.first-block{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    
-    justify-content: space-between;
-    margin-top: 2%;
-    margin-bottom: 5%;
-}
-
-#headshot {
-    width:50%;
-    height: 100%;
-}
-
-#about-me{
-    width: 50%;
-    height: 100%;
-}
-
-#about-me h2{
-    font-weight: bold;
+#Projects{
+    text-align: center;
     font-size: 3.4rem;
 }
 
-#about-me p {
-    line-height: 2rem;
-    font-size: 1.3rem;
-  
+.block-one, .block-two{
+    display: flex;
+    justify-content: space-evenly;
 }
 
-#headshot img{
-    width: 70%;
-    transition: opacity 1s;
-    border-radius: 50%;
-    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.781);
-    margin: 10%;
+
+.block-two{
+    margin-top: 5%;
 }
 
-#headshot img:hover{
-    opacity: 0.85;
+
+
+.project-column{
+    border-radius: 41px;
+    background: #a0c7e3;
+    box-shadow: 9px 9px 18px #6d879a, -9px -9px 18px #d3ffff;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    transition: opacity 0.5s, box-shadow .5s, transform 1s;
 }
 
-#about-me h2, p {
-text-align: center;
+.project-column:hover{
+    opacity: 0.9;
+    box-shadow: 2px 2px 3px 3px #001829;
+    transform: ease-in-out;
+}
+
+.project-column h3{
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.project-column p{
+    text-align: center;
+    width: 88%;
+    font-weight: 500;
+    line-height: 1.4em;
+}
+
+#project-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-1 img{
+    width: 100%;
+    height: 100%;
+}
+
+.image-2 img{
+    width: 100%;
+    height: 95%;
+}
+
+.image-3 img{
+    width: 100%;
+    height: 93%;
+}
+
+.image-4 img{
+    width: 100%;
+    height: 90%;
+}
+
+.image-5 img{
+    width: 100%;
+    height: 92%;
+}
+
+.image-6 img{
+    width: 100%;
+    height: 82%;
 }
 
 .footer h5{
     text-align: center;
     width: 100%;
-}
-
-h6{
-    background-color: black;
-    width:1px;
-
 }
