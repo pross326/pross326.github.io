@@ -139,6 +139,11 @@ nav li a:hover{
 }
 }
 
+.footer h5{
+    text-align: center;
+    width: 100%;
+}
+
 /* Medium Screens*/
 
 @media (max-width: 425px) {
@@ -208,6 +213,10 @@ nav li a:hover{
 
 @media (max-width: 375px) {
 
+    .home-body {
+        height: 350px;
+    }
+
     nav {
         display: flex;
         align-items: center;
@@ -217,11 +226,11 @@ nav li a:hover{
     }
 
     .left-column img {
-        height: 50%;
+        height: 90%;
         border-radius: 65%;
-        margin-bottom: 240%;
+        margin-bottom: 70%;
     }
-    
+
     nav li {
         display: flex;
         font-weight: bold;
@@ -232,6 +241,11 @@ nav li a:hover{
     .title {
         color: #003D52;
         font-size: 210%;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
     }
 
 }
@@ -259,17 +273,41 @@ nav li a:hover{
         font-size: 150%;
     }
 
+    .home-body h1{
+        display: none;
+    }
+
+
+
     .home-body {
-        height: 650px;
+        height: 330px;
         width: 100%;
         display: flex;
         justify-content: space-between;
         margin-top: 8%;
-        margin-left: 6%;
     }
 
     .left-column img {
         margin-bottom: 290%;
+    }
+
+    .left-column img{
+    margin-bottom: 60%;
+    height: 85%;
+    }
+
+    .right-column {
+        display: flex;
+        width: 40%;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        height: 80%;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
     }
 
 }
