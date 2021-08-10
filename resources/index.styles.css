@@ -150,7 +150,7 @@ nav li a:hover{
 
     .title {
         color: #003D52;
-        font-size: 150%;
+        font-size: 2rem;
     }
 
     .right-column h1 {
@@ -172,17 +172,21 @@ nav li a:hover{
     }
     
     .home-body {
-        height: 650px;
+        height: 400px;
         width: 100%;
         display: flex;
         justify-content: space-between;
         margin-top: 10%;
     }
 
+    .left-column{
+        width: 50%;
+    }
+
     .left-column img {
-        height: 50%;
+        height: 80%;
         border-radius: 65%;
-        margin-bottom: 200%;
+        margin-bottom: 70%;
     }
 
     header{
