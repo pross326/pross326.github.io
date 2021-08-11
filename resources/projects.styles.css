@@ -204,6 +204,9 @@ nav li a:hover{
         width: 100%;
         margin-bottom: 10%;
     }
+    .project-column h3{
+        font-size: 1.4rem;
+    }
 
 }
 
@@ -240,6 +243,9 @@ nav li a:hover{
     .project-column{
         width: 100%;
         margin-bottom: 10%;
+    }
+    .project-column h3{
+        font-size: 1.4rem;
     }
 
 }
@@ -288,7 +294,7 @@ nav li a:hover{
     }
 
     .project-column h3{
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
 }
