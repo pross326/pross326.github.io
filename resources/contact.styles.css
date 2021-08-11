@@ -167,6 +167,10 @@ a {
     text-decoration: none;
 }
 
+.footer h5{
+    text-align: center;
+    width: 100%;
+}
 
 @media (max-width: 425px) {
 
