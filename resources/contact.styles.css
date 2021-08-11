@@ -82,9 +82,6 @@ nav li a:hover{
     font-size: 3.4rem;
 }
 
-/* .skills-section img{
-    width: 80%;
-} */
 .contact-section{
     width: 100%;
     text-align: center;
@@ -98,7 +95,7 @@ nav li a:hover{
 }
 
 .circuit img{
-    width:90%;
+    width:85%;
     height: 90%;
 }
 
@@ -106,27 +103,43 @@ nav li a:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: left;
     width: 50%;
 }
 
 .contact-buttons img{
     border: 1px solid black;
-    background-color: slategray;
+    background-color: #bae6ff;
 }
 
-.buttonlink{
-    display: flex;
-    margin-top: 8%;
-    margin-bottom: 6%;
-    margin-right: 50%;
-
-}
-
-#linkedin{
+.contact-buttons a{
     display: flex;
 }
 
+.pill-button{
+    border: 1px solid black;
+    display: flex;
+    width: 55%;
+    padding: 10px 30px;
+    border-radius: 80px;
+    transition: opacity 0.5s, box-shadow .5s, transform 1s;
+    display: flex;
+    margin: 3% 4%;
+    background-color: #003d52;
+}
+
+.pill-button:hover{
+    opacity: 0.75;
+    transform: ease-in-out;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.781);
+}
+
+.button-label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
 
 #gmail img,
 #github img,
@@ -135,15 +148,6 @@ nav li a:hover{
     width: 80px;
     padding: 5px;
     border-radius: 50%;
-    transition: opacity 0.5s, box-shadow .5s, transform 1s;
-}
-
-#gmail img:hover,
-#github img:hover,
-#linkedin img:hover{
-    opacity: 0.75;
-    transform: ease-in-out;
-    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.781);
 }
 
 .skill-list{
@@ -153,3 +157,113 @@ nav li a:hover{
     line-height: 1.4em;
 }
 
+h3{
+    font-size: 1.6rem;
+    color: #bae6ff;
+    letter-spacing: 0.1025rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+@media (max-width: 425px) {
+
+    header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 30%;
+        width: 100%;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav ul {
+        display: flex;
+        width: 200%;
+        justify-content: space-evenly;
+        margin-right: 10%;
+    }
+
+.contact-section{
+    flex-direction: column;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150%;
+    margin-top: 15%;
+}
+
+.circuit img {
+    width: 120%;
+
+}
+
+
+@media (max-width: 375px) {
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: center;
+        margin-right: 6%;
+    }
+
+    nav li {
+        display: flex;
+        font-weight: bold;
+        width: 85px;
+        height: 36px;
+        flex-direction: column;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
+    }
+}
+
+
+@media (max-width: 320px) {
+
+    nav li{
+        display:flex;
+        font-weight: bold;
+        width: 75px;
+        height: 36px;
+        flex-direction: column;
+    
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: center;
+        margin-right: 10%;
+    }
+    .title {
+        color: #003D52;
+        font-size: 150%;
+    }
+
+    footer h5{
+        height: 50%;
+        font-size: 0.6rem;
+    }
+
+    .pill-button{
+        width: 70%;
+    }
+
+}
