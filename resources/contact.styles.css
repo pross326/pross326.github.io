@@ -232,6 +232,11 @@ a {
         height: 50%;
         font-size: 0.6rem;
     }
+
+    .contact-buttons a {
+        display: flex;
+        width: 70%;
+    }
 }
 
 
@@ -264,6 +269,11 @@ a {
 
     .pill-button{
         width: 70%;
+    }
+
+    .contact-buttons a {
+        display: flex;
+        width: 75%;
     }
 
 }
