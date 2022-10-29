@@ -1,0 +1,117 @@
+
+.title{
+    color: #003D52;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-end;
+    z-index: 4;
+}
+
+nav ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+nav li{
+    display:flex;
+    font-weight: bold;
+    width: 99px;
+    height: 33px;
+    flex-direction: column;
+
+}
+
+nav li span{
+    color: #003D52;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    background: #bae6ff;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    border-radius: 16px;
+}
+
+nav li span:hover{
+    opacity: 0.9;
+    background-color: #001829;
+    color: #C2F0FF;
+    text-shadow: 1px 1px rgba(211, 211, 211, 0.432);
+    cursor: pointer;
+}
+
+body { 
+    opacity: 0;
+    transition: ease-in-out opacity .5s;
+ }
+
+
+#tutoring-nav{
+    background: hsla(202, 100%, 86%, 1);
+    background: linear-gradient(45deg, hsla(202, 100%, 86%, 1) 0%, hsla(82, 71%, 77%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(202, 100%, 86%, 1) 0%, hsla(82, 71%, 77%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(202, 100%, 86%, 1) 0%, hsla(82, 71%, 77%, 1) 100%);
+}
+#tutoring-nav:hover{
+    background: hsla(82, 100%, 37%, 1);
+    color:rgb(253, 255, 250);
+background: linear-gradient(45deg, hsla(82, 100%, 37%, 1) 0%, hsla(202, 100%, 47%, 1) 100%);
+background: -moz-linear-gradient(45deg, hsla(82, 100%, 37%, 1) 0%, hsla(202, 100%, 47%, 1) 100%);
+background: -webkit-linear-gradient(45deg, hsla(82, 100%, 37%, 1) 0%, hsla(202, 100%, 47%, 1) 100%);
+}
+
+@media (max-width: 425px){
+    body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .container{
+        width: 100%;
+    }
+    nav ul{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    nav ul li{
+        width: 18vw
+    }
+
+    #background{
+        position: absolute;
+        top: 20vh
+    }
+
+
+    .home-body{
+        height: 85vw
+    }
+    }
+
+@media (max-width: 425px){
+    nav ul li span{
+        font-size: smaller
+    }
+    .right-column{
+        width: 50vw;
+    }
+}
+
+@media (max-width: 320px){
+    body{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    
+}
+}
