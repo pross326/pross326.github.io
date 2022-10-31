@@ -271,13 +271,27 @@ background: hsla(202, 100%, 86%, 1);
 
 }
 
+@media (max-width: 390px){
+    .subject{
+        width: 18vh;
+        padding: 7px 3px;
+    }
+
+    .text-me a{
+        font-size: 12px;
+        padding: 8px
+    }
+    .text-me{
+        margin: 20px;
+    }
+}
+
 
 @media (max-width: 375px){
     .subject{
         width: 18vh;
         padding: 7px 3px;
     }
-
     .text-me a{
         font-size: 12px;
         padding: 8px
