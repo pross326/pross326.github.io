@@ -91,7 +91,6 @@ nav li a:hover{
 
 .circuit{
     width: 50%;
-    height: 90%;
 }
 
 .circuit img{
@@ -101,9 +100,10 @@ nav li a:hover{
 
 .contact-buttons{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 50%;
+    justify-content: space-around;
 }
 
 .contact-buttons img{
@@ -111,9 +111,6 @@ nav li a:hover{
     background-color: #bae6ff;
 }
 
-.contact-buttons a{
-    display: flex;
-}
 
 .pill-button{
     border: 1px solid black;
@@ -202,82 +199,17 @@ a {
 
 .contact-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 150%;
-    margin-top: 15%;
+    width: 100%;
+    margin: 10vh;
+    justify-content: space-around;
 }
 
 .circuit img {
-    width: 120%;
-
-}
+    width: 100%;
 }
 
-@media (max-width: 375px) {
-
-    nav {
-        display: flex;
-        align-items: center;
-        width: 50%;
-        justify-content: center;
-        margin-right: 6%;
-    }
-
-    nav li {
-        display: flex;
-        font-weight: bold;
-        width: 85px;
-        height: 36px;
-        flex-direction: column;
-    }
-
-    footer h5{
-        height: 50%;
-        font-size: 0.6rem;
-    }
-
-    .contact-buttons a {
-        display: flex;
-        width: 70%;
-    }
 }
 
 
-@media (max-width: 320px) {
-
-    nav li{
-        display:flex;
-        font-weight: bold;
-        width: 75px;
-        height: 36px;
-        flex-direction: column;
-    
-    }
-    nav {
-        display: flex;
-        align-items: center;
-        width: 50%;
-        justify-content: center;
-        margin-right: 10%;
-    }
-    .title {
-        color: #003D52;
-        font-size: 150%;
-    }
-
-    footer h5{
-        height: 50%;
-        font-size: 0.6rem;
-    }
-
-    .pill-button{
-        width: 70%;
-    }
-
-    .contact-buttons a {
-        display: flex;
-        width: 75%;
-    }
-
-}

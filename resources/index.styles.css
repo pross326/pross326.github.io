@@ -39,6 +39,7 @@ nav {
     align-items: center;
     width: 50%;
     justify-content: flex-end;
+    z-index: 4;
 }
 
 nav ul {
@@ -56,7 +57,7 @@ nav li{
 
 }
 
-nav li a{
+nav li span{
     color: #003D52;
     text-decoration: none;
     transition: all .1s ease-in-out;
@@ -70,21 +71,33 @@ nav li a{
     border-radius: 16px;
 }
 
-nav li a:hover{
+nav li span:hover{
     opacity: 0.9;
     background-color: #001829;
     color: #C2F0FF;
     text-shadow: 1px 1px rgba(211, 211, 211, 0.432);
 }
 
+body { 
+    opacity: 0;
+    transition: ease-in-out opacity .5s;
+ }
+
 .home-body{
     height: 650px;
     width: 100%;
     display: flex;
-    background-image: url("./images/blob.svg");
-    background-repeat: no-repeat;
-    background-position: cover;
     justify-content: space-evenly ;
+    z-index: 4;
+}
+
+#background{
+    position: absolute;
+    top: 2em;
+    z-index: 0;
+    max-width: 90%;
+    opacity: 0.6
+    
 }
 
 .left-column{
@@ -92,6 +105,8 @@ nav li a:hover{
     width: 40%;
     align-items: center;
     justify-content: center;
+    margin-top: 2em;
+    z-index: 4;
 }
 
 .left-column img{
@@ -101,12 +116,18 @@ nav li a:hover{
     
 }
 
+.footer{
+    z-index: 4;
+}
+
 .right-column{
     display: flex;
     width: 40%;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    z-index: 4;
+
 }
 
 .right-column h1, h2{
@@ -183,6 +204,8 @@ nav li a:hover{
         width: 50%;
     }
 
+    
+
     .left-column img {
         height: 80%;
         border-radius: 65%;
@@ -209,109 +232,6 @@ nav li a:hover{
         width: 200%;
         justify-content: space-evenly;
         margin-right: 10%;
-    }
-
-}
-
-/* Smaller Screens*/
-
-@media (max-width: 375px) {
-
-    .home-body {
-        height: 350px;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-        width: 50%;
-        justify-content: center;
-        margin-right: 6%;
-    }
-
-    .left-column img {
-        height: 90%;
-        border-radius: 65%;
-        margin-bottom: 70%;
-    }
-
-    nav li {
-        display: flex;
-        font-weight: bold;
-        width: 85px;
-        height: 36px;
-        flex-direction: column;
-    }
-    .title {
-        color: #003D52;
-        font-size: 210%;
-    }
-
-    footer h5{
-        height: 50%;
-        font-size: 0.6rem;
-    }
-
-}
-
-@media (max-width: 320px) {
-
-    nav li{
-        display:flex;
-        font-weight: bold;
-        width: 75px;
-        height: 36px;
-        flex-direction: column;
-    
-    }
-    nav {
-        display: flex;
-        align-items: center;
-        width: 50%;
-        justify-content: center;
-        margin-right: 10%;
-    }
-
-    .title {
-        color: #003D52;
-        font-size: 150%;
-    }
-
-    .home-body h1{
-        display: none;
-    }
-
-
-
-    .home-body {
-        height: 330px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 8%;
-    }
-
-    .left-column img {
-        margin-bottom: 290%;
-    }
-
-    .left-column img{
-    margin-bottom: 60%;
-    height: 85%;
-    }
-
-    .right-column {
-        display: flex;
-        width: 40%;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-        height: 80%;
-    }
-
-    footer h5{
-        height: 50%;
-        font-size: 0.6rem;
     }
 
 }

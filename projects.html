@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel ="stylesheet" href="./resources/projects.styles.css" type="text/css">
     <script src="myscript.js" defer></script>
+    <link rel ="stylesheet" href="./resources/styling.css" type="text/css">
+
     
     <title>Paul Ross' Portfolio</title>
 </head>
@@ -16,10 +18,11 @@
     <!--------- nav section -------->
     <nav>
         <ul class="nav">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./projects.html">Projects</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><span onclick="transitionToPage('./index.html')">Home</span></li>
+            <li><span onclick="transitionToPage('./about.html')">About</span></li>
+            <li><span onclick="transitionToPage('./projects.html')">Projects</span></li>
+            <li><span onclick="transitionToPage('./contact.html')">Contact</span></li>
+            <li ><span id="tutoring-nav" onclick="transitionToPage('./tutoring.html')">Tutoring</span></li>
         </ul>
     </nav>
   </header>
@@ -33,7 +36,7 @@
         <div class="image-5">
             <img src="resources/images/CreativeTeacher.png">
         </div>
-            <p>While I teach full time and practice front end development, I also tutor 10 hours per week at a small tutoring company where I am 1 of 3 employees. As I approached my goal of becoming a full time front end developer, I realized I would not be tutoring at the company any longer. As a parting gift, I created a website for the company. </p>
+            <p>While I taught full time and practiced front end development, I also tutored 10 hours per week at a small tutoring company where I was 1 of 3 employees. As I approached my goal of becoming a full time front end developer, I realized I would not be tutoring at the company any longer. As a parting gift, I created a website for the company. </p>
     </div>
       <div>
        
@@ -53,7 +56,7 @@
               <img src="resources/images/tutoring1.png">
           </div>
           
-              <p> As a former math teacher, I tutored students outside of school and gained a following through word of mouth. I created my own tutoring website using HTML5 and CSS to mitigate scheduling conflicts. I incorporated a Calendly API so that my clients are able to choose times slots that are convenient for them.  </p>
+              <p> As a former math teacher, I tutored students outside of school and gained a following through word of mouth. I created my own tutoring website to mitigate scheduling conflicts. I incorporated a Calendly API so that my clients are able to choose times slots that are convenient for them.  </p>
           
       </div>
   </section>
@@ -78,7 +81,7 @@
               <img src="resources/images/ws1.png" alt="Paul's Website Style Guide Screenshot">       
           </div>
               <p>
-                  This website style guide describes various types of color schemes, fonts, and text styles. This was one of my favorite milestone projects in the Codecademy Front-end Development course. This project was used as a reference for flexbox, colors, font API's, and CSS hover and click properties.
+                  This website style guide describes various types of color schemes, fonts, and text styles. This was one of my first milestone projects in the Codecademy Front-end Development course. This project was used as a reference for flexbox, colors, font API's, and CSS hover and click properties.
               </p>
 
       </div>

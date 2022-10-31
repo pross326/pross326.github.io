@@ -10,12 +10,19 @@ body{
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    background-image: url("./images/about.blob.svg");
-    background-repeat: no-repeat;
-    background-position: cover;
-    background-blend-mode: soft-light; 
     ;
 }
+
+#background{
+    position: absolute;
+    top: 2em;
+    left: 55em;
+    opacity: 0.5;
+    z-index: 0;
+    max-width: 90%;
+    
+}
+
 
 
 p, h2,h3, li{
@@ -43,6 +50,8 @@ nav {
     align-items: center;
     width: 50%;
     justify-content: flex-end;
+    z-index: 4;
+
 }
 
 nav ul {
@@ -103,6 +112,7 @@ nav li a:hover{
 #about-me{
     width: 50%;
     height: 100%;
+    z-index: 2;
 }
 
 h2{
@@ -113,8 +123,9 @@ h2{
 
 }
 #about-me p {
-    line-height: 2.5rem;
-    font-size: 1.3rem;
+    line-height: 2.5em;
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 #about-me h2, p {
@@ -132,6 +143,36 @@ h6{
 
 }
 
+@media (max-width: 1024px) {
+    #about-me p{
+        font-size: smaller;
+    }
+}
+
+@media (max-width: 768px) {
+    #about-me p{
+        font-size: smaller;
+        width: 45vw;
+    }
+    #solution-mindset img {
+        padding-top: 12%
+    }
+}
+
+@media (max-width: 425px) {
+    #about-me p{
+        font-size: smaller;
+        width: 80vw;
+        margin: 0 auto;
+    }
+    #solution-mindset img {
+        width: 50%;
+        margin: 0;
+        padding-top: 0px
+    }
+}
+    
+
 
 @media (max-width: 425px) {
 
@@ -146,6 +187,8 @@ h6{
         align-items: center;
         height: 30%;
         width: 100%;
+        z-index: 4;
+
     }
 
     nav {
@@ -153,6 +196,7 @@ h6{
         align-items: center;
         width: 100%;
         justify-content: center;
+        z-index: 4;
     }
 
     nav ul {
@@ -160,6 +204,8 @@ h6{
         width: 200%;
         justify-content: space-evenly;
         margin-right: 10%;
+        z-index: 4;
+
     }
 
     .first-block {
