@@ -144,11 +144,34 @@ h6{
 }
 
 @media (max-width: 1024px) {
-    nav ul {
-        width: 20vw;
-
+    #about-me p{
+        font-size: smaller;
     }
 }
+
+@media (max-width: 768px) {
+    #about-me p{
+        font-size: smaller;
+        width: 45vw;
+    }
+    #solution-mindset img {
+        padding-top: 12%
+    }
+}
+
+@media (max-width: 425px) {
+    #about-me p{
+        font-size: smaller;
+        width: 80vw;
+        margin: 0 auto;
+    }
+    #solution-mindset img {
+        width: 50%;
+        margin: 0;
+        padding-top: 0px
+    }
+}
+    
 
 
 @media (max-width: 425px) {
