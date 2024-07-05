@@ -38,7 +38,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("/pross326.github.io/"),
+  history: createWebHistory("/"),
   routes,
 });
 
