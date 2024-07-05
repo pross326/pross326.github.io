@@ -16,7 +16,7 @@
     "scrollreveal": "^4.0.9",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.4.9"
+    "vuetify": "^3.6.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

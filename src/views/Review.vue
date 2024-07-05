@@ -70,7 +70,6 @@ export default {
           position: "SEO Specialist",
           text: "Paul's skills in web development are top-notch.",
         },
-        // Add more reviews as needed
       ],
     };
   },
@@ -84,7 +83,7 @@ export default {
 
 <style scoped>
 .reviews-container {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

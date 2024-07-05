@@ -196,7 +196,7 @@ export default {
           duration: 1000,
           distance: "50px",
           easing: "ease-in-out",
-          origin: "bottom",
+          origin: "top",
         });
       },
     },
@@ -206,12 +206,7 @@ export default {
 
 <style scoped>
 .projects-container {
-  padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(74, 144, 226, 0.2),
-    rgba(66, 185, 131, 0.2)
-  );
+  padding: 40px;
   animation: fadeIn 1.5s ease-in-out;
 }
 

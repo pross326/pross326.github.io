@@ -1,24 +1,23 @@
 <template>
   <v-footer class="footer" padless>
-    <v-container fluid>
-      <v-row align="center" justify="center">
-        <v-col cols="12" class="text-center">
-          <p>&copy; 2024 Paul Ross. All rights reserved.</p>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-col cols="12" class="text-center">
+      <p>&copy; 2024 Paul Ross. All rights reserved.</p>
+    </v-col>
   </v-footer>
 </template>
+
 <script>
 export default {
   name: "FooterVue",
 };
 </script>
+
 <style scoped>
 .footer {
+  width: 100%;
   background-color: #333;
   color: #fff;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 p {

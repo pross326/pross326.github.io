@@ -1,7 +1,8 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Projects from "../views/Projects.vue";
 import Contact from "../views/Contact.vue";
+import Review from "../views/Review.vue";
 import Resume from "../views/Resume.vue";
 import LeaveAReview from "../views/LeaveAReview.vue";
 
@@ -23,7 +24,8 @@ const routes = [
   },
   {
     path: "/reviews",
-    redirect: "/", // Redirect reviews path to home
+    name: "Review",
+    component: Review,
   },
   {
     path: "/leave-a-review",
@@ -38,7 +40,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory("/"),
   routes,
 });
 
