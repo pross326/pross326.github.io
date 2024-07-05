@@ -1,0 +1,215 @@
+*{
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* border: 1px solid red; */
+}
+
+body{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p, h2,h3, li{
+    color: #262626;
+}
+
+h3{
+    color:#262626
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 20%;
+    width: 100%;
+}
+
+header a{
+    text-decoration: none;
+}
+
+
+.title{
+    color: #003D52;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+nav ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+nav li{
+    display:flex;
+    font-weight: bold;
+    width: 99px;
+    height: 33px;
+    flex-direction: column;
+
+}
+
+nav li a{
+    color: #003D52;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    background: #bae6ff;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    border-radius: 16px;
+}
+
+nav li a:hover{
+    opacity: 0.9;
+    background-color: #001829;
+    color: #C2F0FF;
+    text-shadow: 1px 1px rgba(211, 211, 211, 0.432);
+}
+
+#Contact{
+    text-align: center;
+    font-size: 3.4rem;
+}
+
+.contact-section{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+.circuit{
+    width: 50%;
+}
+
+.circuit img{
+    width:85%;
+    height: 90%;
+}
+
+.contact-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.contact-buttons img{
+    border: 1px solid black;
+    background-color: #bae6ff;
+}
+
+
+.pill-button{
+    border: 1px solid black;
+    display: flex;
+    width: 55%;
+    padding: 10px 30px;
+    border-radius: 80px;
+    transition: opacity 0.5s, box-shadow .5s, transform 1s;
+    display: flex;
+    margin: 3% 4%;
+    background-color: #003d52;
+}
+
+.pill-button:hover{
+    opacity: 0.75;
+    transform: ease-in-out;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.781);
+}
+
+.button-label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+#gmail img,
+#github img,
+#linkedin img{
+    height: 80px;
+    width: 80px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.skill-list{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.4em;
+}
+
+h3{
+    font-size: 1.6rem;
+    color: #bae6ff;
+    letter-spacing: 0.1025rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.footer h5{
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 425px) {
+
+    header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 30%;
+        width: 100%;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav ul {
+        display: flex;
+        width: 200%;
+        justify-content: space-evenly;
+        margin-right: 10%;
+    }
+
+.contact-section{
+    flex-direction: column;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 10vh;
+    justify-content: space-around;
+}
+
+.circuit img {
+    width: 100%;
+}
+
+}
+
+
