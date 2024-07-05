@@ -1,7 +1,7 @@
 <template>
   <v-container class="home-container" fluid>
     <v-row class="home-row" align="center" justify="center">
-      <v-col cols="12" md="6" class="text-center">
+      <v-col cols="12" md="6" class="text-center home-col">
         <v-avatar class="avatar" size="200">
           <img
             src="/src/assets/headshot.png"
@@ -85,10 +85,17 @@ export default {
   );
   animation: fadeIn 1.5s ease-in-out;
   padding-top: 0px !important;
+  width: 100%;
+  padding: 0;
 }
 
 .home-row {
   margin-top: 0;
+  width: 100%;
+}
+
+.home-col {
+  padding: 0 20px;
 }
 
 .avatar {
@@ -203,7 +210,7 @@ export default {
   }
 
   .chips-container {
-    gap: 30px;
+    gap: 10px;
     display: flex;
     align-content: center;
   }
