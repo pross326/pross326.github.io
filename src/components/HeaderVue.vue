@@ -5,7 +5,7 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <!-- Menu Icon for Mobile -->
-    <v-btn icon @click="drawer = !drawer" class="d-md-none">
+    <v-btn icon @click="toggleDrawer" class="d-md-none">
       <v-icon>mdi-menu</v-icon>
     </v-btn>
     <!-- Regular Navigation for Desktop -->
@@ -16,27 +16,16 @@
       <RouterLink class="router-link" to="/resume">Resume</RouterLink>
     </nav>
     <!-- Drawer for Mobile Navigation -->
-    <v-navigation-drawer v-model="drawer" temporary app right>
+    <v-navigation-drawer v-model="drawer" app temporary location="right">
       <v-list>
-        <v-list-item>
-          <RouterLink class="drawer-link" to="/" @click="drawer = false"
-            >Home</RouterLink
-          >
-        </v-list-item>
-        <v-list-item>
-          <RouterLink class="drawer-link" to="/projects" @click="drawer = false"
-            >Projects</RouterLink
-          >
-        </v-list-item>
-        <v-list-item>
-          <RouterLink class="drawer-link" to="/contact" @click="drawer = false"
-            >Contact</RouterLink
-          >
-        </v-list-item>
-        <v-list-item>
-          <RouterLink class="drawer-link" to="/resume" @click="drawer = false"
-            >Resume</RouterLink
-          >
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.text"
+          @click="navigate(item.route)"
+        >
+          <RouterLink class="drawer-link" :to="item.route">{{
+            item.text
+          }}</RouterLink>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -49,7 +38,22 @@ export default {
   data() {
     return {
       drawer: false,
+      menuItems: [
+        { text: "Home", route: "/" },
+        { text: "Projects", route: "/projects" },
+        { text: "Contact", route: "/contact" },
+        { text: "Resume", route: "/resume" },
+      ],
     };
+  },
+  methods: {
+    toggleDrawer() {
+      this.drawer = !this.drawer;
+    },
+    navigate(route) {
+      this.$router.push(route);
+      this.drawer = false;
+    },
   },
 };
 </script>
@@ -111,7 +115,6 @@ nav a.router-link-exact-active:hover {
   transform: translateY(-2px);
 }
 
-/* Mobile Menu Styling */
 .v-navigation-drawer {
   background-color: #333;
   color: #fff;
@@ -130,9 +133,21 @@ nav a.router-link-exact-active:hover {
   color: #42b983;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   #title {
     font-size: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+
+  nav a.router-link {
+    font-size: 1em;
+  }
+
+  .router-link {
+    font-size: 1em;
   }
 }
 </style>

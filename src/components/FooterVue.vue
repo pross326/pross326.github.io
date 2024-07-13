@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="footer" padless>
+  <v-footer class="footer" fixed padless>
     <v-col cols="12" class="text-center">
       <p>&copy; 2024 Paul Ross. All rights reserved.</p>
     </v-col>
@@ -17,7 +17,7 @@ export default {
   width: 100%;
   background-color: #333;
   color: #fff;
-  padding: 10px 0;
+  padding: 2px 0;
 }
 
 p {

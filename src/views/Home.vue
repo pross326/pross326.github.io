@@ -1,61 +1,95 @@
 <template>
   <v-container class="home-container" fluid>
     <v-row class="home-row" align="center" justify="center">
-      <v-col cols="12" md="6" class="text-center home-col">
-        <v-avatar class="avatar" size="200">
-          <img
-            src="/src/assets/headshot.png"
-            alt="Paul Ross"
-            class="avatar-image"
-          />
-        </v-avatar>
-        <div class="chips-container">
-          <v-chip class="chip linkedin-chip" @click="goToLinkedIn">
-            <v-icon left>mdi-linkedin</v-icon>
-            LinkedIn
-          </v-chip>
-          <v-chip class="chip email-chip" @click="sendEmail">
-            <v-icon left>mdi-email-outline</v-icon>
-            Email
-          </v-chip>
-          <v-chip class="chip resume-chip" @click="goToResume">
-            <v-icon left>mdi-file-document-outline</v-icon>
-            Resume
-          </v-chip>
-          <v-chip class="chip andela-chip" @click="goToAndela">
-            <v-icon left>mdi-account-network</v-icon>
-            Andela
-          </v-chip>
-          <v-chip class="chip github-chip" @click="goToGithub">
-            <v-icon left>mdi-github</v-icon>
-            GitHub
-          </v-chip>
-        </div>
-        <v-divider class="my-4"></v-divider>
-        <h1 class="headline">Paul Ross</h1>
-        <p class="subheading">Web Developer | Front End Developer</p>
-        <p class="subheading">Former High School Math Teacher</p>
-        <p class="location">Rolesville, North Carolina</p>
-        <v-btn class="contact-btn mt-4" @click="goToContact">Contact Me</v-btn>
+      <v-col cols="12" md="7" sm="7" xs="7" class="text-center pa-4">
+        <v-row align="center" justify="center">
+          <v-col
+            cols="12"
+            md="5"
+            sm="7"
+            xs="7"
+            class="d-flex justify-center image-col"
+            v-if="showImage"
+          >
+            <v-img
+              src="/src/assets/full-body.png"
+              width="150"
+              alt="Paul Ross"
+              class="full-body-image"
+            ></v-img>
+          </v-col>
+          <v-col
+            cols="6"
+            md="5"
+            class="d-flex justify-center headshot-col"
+            v-if="!showImage"
+          >
+            <v-img
+              src="/src/assets/headshot.png"
+              width="100"
+              alt="Paul Ross"
+              class="headshot-image"
+            ></v-img>
+          </v-col>
+          <v-col cols="12" md="7" class="info-col">
+            <div class="info-container">
+              <h1 class="headline">Paul Ross</h1>
+              <p class="subheading">Web Developer | Front End Developer</p>
+              <p class="subheading">Former High School Math Teacher</p>
+              <p class="location">Rolesville, North Carolina</p>
+            </div>
+            <div class="chips-container mt-4">
+              <v-chip class="chip linkedin-chip mb-2" @click="goToLinkedIn">
+                <v-icon left>mdi-linkedin</v-icon>
+                LinkedIn
+              </v-chip>
+              <v-chip class="chip resume-chip mb-2" @click="goToResume">
+                <v-icon left>mdi-file-document-outline</v-icon>
+                Resume
+              </v-chip>
+              <v-chip class="chip andela-chip mb-2" @click="goToAndela">
+                <v-icon left>mdi-account-network</v-icon>
+                Andela
+              </v-chip>
+              <v-chip class="chip github-chip mb-2" @click="goToGithub">
+                <v-icon left>mdi-github</v-icon>
+                GitHub
+              </v-chip>
+            </div>
+            <v-btn class="contact-btn mt-4" @click="goToContact">
+              Contact Me
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
 <script>
 export default {
   name: "HomeView",
   data() {
-    return {};
+    return {
+      showImage: true,
+    };
+  },
+  created() {
+    this.updateImageVisibility();
+    window.addEventListener("resize", this.updateImageVisibility);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.updateImageVisibility);
   },
   methods: {
+    updateImageVisibility() {
+      this.showImage = window.innerWidth > 600;
+    },
     goToContact() {
       this.$router.push({ path: "/contact" });
     },
     goToLinkedIn() {
       window.open("https://www.linkedin.com/in/paul-ross-ny-nc/", "_blank");
-    },
-    sendEmail() {
-      window.location.href = "mailto:pross326@gmail.com";
     },
     goToResume() {
       window.open("/src/assets/resume2024.pdf", "_blank");
@@ -72,6 +106,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .home-container {
   height: 100%;
@@ -84,87 +119,36 @@ export default {
     rgba(66, 185, 131, 0.2)
   );
   animation: fadeIn 1.5s ease-in-out;
-  padding-top: 0px !important;
+  padding: 0 !important;
   width: 100%;
-  padding: 0;
+  overflow-x: hidden;
 }
 
 .home-row {
-  margin-top: 0;
+  margin: 0;
   width: 100%;
 }
 
-.home-col {
-  padding: 0 20px;
+.full-body-image {
+  max-width: 70%;
+  height: auto;
+  border-radius: 8px;
 }
 
-.avatar {
-  border: 5px solid #42b983;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.headshot-image {
+  border-radius: 50%;
 }
 
-.chips-container {
+.info-col {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 0 12px;
-  height: 36px;
-  border-radius: 18px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s,
-    transform 0.3s;
-  width: auto;
-  max-width: 150px;
-  display: flex;
-  justify-content: center;
-}
-
-.linkedin-chip {
-  background-color: #1e88e5;
-  color: white;
-}
-
-.email-chip {
-  background-color: #d32f2f;
-  color: white;
-}
-
-.resume-chip {
-  background-color: #ffca28;
-  color: white;
-}
-
-.andela-chip {
-  background-color: #2a73cc;
-  color: white;
-}
-
-.github-chip {
-  background-color: #333;
-  color: white;
-}
-
-.chip:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-}
-
-.avatar-image {
-  object-fit: cover;
-  object-position: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .headline {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #4e6c8a;
   margin: 10px 0;
@@ -196,9 +180,56 @@ export default {
   transform: translateY(-2px);
 }
 
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.chip {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.linkedin-chip {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.resume-chip {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.andela-chip {
+  background-color: #ffca28;
+  color: white;
+}
+
+.github-chip {
+  background-color: #333;
+  color: white;
+}
+
+.chip:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
   .headline {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .subheading {
@@ -210,18 +241,37 @@ export default {
   }
 
   .chips-container {
-    gap: 10px;
-    display: flex;
-    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  .chip {
+    width: 100%;
+    justify-content: center;
   }
-  to {
-    opacity: 1;
+
+  .contact-btn {
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+
+  .image-col {
+    display: none;
+  }
+
+  .headshot-col {
+    display: flex;
+  }
+
+  .info-container {
+    margin-bottom: 20px;
+  }
+
+  .info-col {
+    align-items: center;
   }
 }
 </style>
