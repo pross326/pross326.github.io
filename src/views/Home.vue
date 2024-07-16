@@ -12,7 +12,7 @@
             v-if="showImage"
           >
             <v-img
-              src="/src/assets/full-body.png"
+              :src="fullBodyImage"
               width="150"
               alt="Paul Ross"
               class="full-body-image"
@@ -25,7 +25,7 @@
             v-if="!showImage"
           >
             <v-img
-              src="/src/assets/headshot.png"
+              :src="headshotImage"
               width="100"
               alt="Paul Ross"
               class="headshot-image"
@@ -72,6 +72,8 @@ export default {
   data() {
     return {
       showImage: true,
+      fullBodyImage: new URL("../assets/full-body.png", import.meta.url).href,
+      headshotImage: new URL("../assets/headshot.png", import.meta.url).href,
     };
   },
   created() {
