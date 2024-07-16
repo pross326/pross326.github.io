@@ -1,8 +1,10 @@
 <template>
-  <v-footer class="footer" fixed padless>
-    <v-col cols="12" class="text-center">
-      <p>&copy; 2024 Paul Ross. All rights reserved.</p>
-    </v-col>
+  <v-footer app>
+    <v-row justify="center">
+      <v-col cols="12" class="text-center">
+        <span>&copy; {{ new Date().getFullYear() }} Paul Ross's Portfolio</span>
+      </v-col>
+    </v-row>
   </v-footer>
 </template>
 
@@ -13,21 +15,9 @@ export default {
 </script>
 
 <style scoped>
-.footer {
-  width: 100%;
+.v-footer {
   background-color: #333;
   color: #fff;
-  padding: 2px 0;
-}
-
-p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 600px) {
-  .footer {
-    text-align: center;
-  }
+  padding: 10px 0;
 }
 </style>

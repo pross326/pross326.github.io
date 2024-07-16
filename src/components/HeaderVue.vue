@@ -5,7 +5,7 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <!-- Menu Icon for Mobile -->
-    <v-btn icon @click="toggleDrawer" class="d-md-none">
+    <v-btn icon @click="$emit('toggleDrawer')" class="d-md-none">
       <v-icon>mdi-menu</v-icon>
     </v-btn>
     <!-- Regular Navigation for Desktop -->
@@ -15,53 +15,20 @@
       <RouterLink class="router-link" to="/contact">Contact</RouterLink>
       <RouterLink class="router-link" to="/resume">Resume</RouterLink>
     </nav>
-    <!-- Drawer for Mobile Navigation -->
-    <v-navigation-drawer v-model="drawer" app temporary location="right">
-      <v-list>
-        <v-list-item
-          v-for="item in menuItems"
-          :key="item.text"
-          @click="navigate(item.route)"
-        >
-          <RouterLink class="drawer-link" :to="item.route">{{
-            item.text
-          }}</RouterLink>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
   </v-app-bar>
 </template>
 
 <script>
 export default {
   name: "HeaderVue",
-  data() {
-    return {
-      drawer: false,
-      menuItems: [
-        { text: "Home", route: "/" },
-        { text: "Projects", route: "/projects" },
-        { text: "Contact", route: "/contact" },
-        { text: "Resume", route: "/resume" },
-      ],
-    };
-  },
-  methods: {
-    toggleDrawer() {
-      this.drawer = !this.drawer;
-    },
-    navigate(route) {
-      this.$router.push(route);
-      this.drawer = false;
-    },
-  },
 };
 </script>
 
 <style scoped>
 #header {
-  background-color: #333;
-  color: #fff;
+  background-color: #2c3e50; /* Slightly lighter than #333 for better readability */
+  color: #ecf0f1; /* Light text for contrast */
+  z-index: 1001; /* Ensure header is above other elements */
 }
 
 nav {
@@ -74,36 +41,37 @@ nav {
 }
 
 nav a.router-link {
-  color: #fff;
+  color: #ecf0f1; /* Light text for contrast */
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #1abc9c; /* Highlight color for active link */
 }
 
 nav a.router-link-exact-active:hover {
-  color: #42b983;
+  color: #16a085; /* Darker shade for hover state */
 }
 
 #title {
-  font-size: 1.8em;
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 3rem);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition:
     transform 0.3s ease,
     color 0.3s ease;
+  white-space: nowrap;
 }
 
 #title:hover {
-  color: #42b983;
+  color: #1abc9c; /* Highlight color for hover state */
 }
 
 .router-link {
   padding: 15px;
   font-weight: bold;
-  font-size: 1.3em;
-  color: #fff;
+  font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+  color: #ecf0f1; /* Light text for contrast */
   text-decoration: none;
   transition:
     color 0.3s ease,
@@ -111,35 +79,16 @@ nav a.router-link-exact-active:hover {
 }
 
 .router-link:hover {
-  color: #42b983;
+  color: #1abc9c; /* Highlight color for hover state */
   transform: translateY(-2px);
-}
-
-.v-navigation-drawer {
-  background-color: #333;
-  color: #fff;
-}
-
-.drawer-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2em;
-  padding: 10px;
-  display: block;
-}
-
-.drawer-link:hover {
-  color: #42b983;
 }
 
 @media (max-width: 500px) {
   #title {
     font-size: 1.2em;
-    white-space: nowrap;
+    max-width: 160px;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 160px;
   }
 
   nav a.router-link {

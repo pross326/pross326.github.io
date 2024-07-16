@@ -113,11 +113,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(74, 144, 226, 0.2),
-    rgba(66, 185, 131, 0.2)
-  );
+  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
   animation: fadeIn 1.5s ease-in-out;
   padding: 0 !important;
   width: 100%;
@@ -148,7 +144,7 @@ export default {
 }
 
 .headline {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #4e6c8a;
   margin: 10px 0;
@@ -156,14 +152,14 @@ export default {
 }
 
 .subheading {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #666;
   margin: 5px 0;
 }
 
 .location {
-  font-size: 1rem;
-  color: #999;
+  font-size: 1.2rem;
+  color: #666;
   margin: 5px 0;
 }
 

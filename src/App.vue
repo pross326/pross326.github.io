@@ -1,10 +1,34 @@
 <template>
   <v-app>
-    <HeaderVue />
-    <v-main class="main-content">
-      <router-view></router-view>
-      <FooterVue />
+    <HeaderVue @toggleDrawer="toggleDrawer" />
+    <!-- Main Content Area -->
+    <v-main>
+      <router-view
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(50, 127, 214, 0.74),
+            #42b983bb
+          );
+        "
+      ></router-view>
     </v-main>
+    <!-- Footer -->
+    <FooterVue />
+    <!-- Drawer for Mobile Navigation -->
+    <v-navigation-drawer v-model="drawer" app temporary bottom>
+      <v-list>
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.text"
+          @click="navigate(item.route)"
+        >
+          <RouterLink class="drawer-link" :to="item.route">{{
+            item.text
+          }}</RouterLink>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </v-app>
 </template>
 
@@ -13,40 +37,55 @@ import HeaderVue from "./components/HeaderVue.vue";
 import FooterVue from "./components/FooterVue.vue";
 
 export default {
+  name: "App",
   components: {
     HeaderVue,
     FooterVue,
+  },
+  data() {
+    return {
+      drawer: false,
+      menuItems: [
+        { text: "Home", route: "/" },
+        { text: "Projects", route: "/projects" },
+        { text: "Contact", route: "/contact" },
+        { text: "Resume", route: "/resume" },
+      ],
+    };
+  },
+  methods: {
+    toggleDrawer() {
+      this.drawer = !this.drawer;
+    },
+    navigate(route) {
+      this.$router.push(route);
+      this.drawer = false;
+    },
   },
 };
 </script>
 
 <style>
-html,
-body,
-#app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* Add any global styles here */
+.v-navigation-drawer {
+  background-color: #333;
+  color: #fff;
+  z-index: 2000;
+  bottom: 0;
+  top: auto;
+  height: 50%;
 }
 
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-align: center;
-  color: #2c3e50;
+.drawer-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+  padding: 10px;
+  display: block;
 }
 
-.v-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
-  box-sizing: border-box;
-  background: linear-gradient(
-    135deg,
-    rgba(74, 144, 226, 0.2),
-    rgba(66, 185, 131, 0.2)
-  );
-  min-height: 100%;
+.drawer-link:hover {
+  color: #42b983;
 }
 </style>
