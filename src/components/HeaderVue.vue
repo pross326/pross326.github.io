@@ -26,8 +26,8 @@ export default {
 
 <style scoped>
 #header {
-  background-color: #2c3e50; /* Slightly lighter than #333 for better readability */
-  color: #ecf0f1; /* Light text for contrast */
+  background-color: #2b3a47; /* Darker background for header */
+  color: #ecf0f1; /* Light text for better visibility */
   z-index: 1001; /* Ensure header is above other elements */
 }
 
@@ -41,7 +41,7 @@ nav {
 }
 
 nav a.router-link {
-  color: #ecf0f1; /* Light text for contrast */
+  color: #ecf0f1; /* Light text for better visibility */
 }
 
 nav a.router-link-exact-active {
@@ -71,7 +71,7 @@ nav a.router-link-exact-active:hover {
   padding: 15px;
   font-weight: bold;
   font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
-  color: #ecf0f1; /* Light text for contrast */
+  color: #ecf0f1; /* Light text for better visibility */
   text-decoration: none;
   transition:
     color 0.3s ease,
