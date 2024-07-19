@@ -94,7 +94,7 @@ export default {
       window.open("https://www.linkedin.com/in/paul-ross-ny-nc/", "_blank");
     },
     goToResume() {
-      window.open("/src/assets/resume2024.pdf", "_blank");
+      window.open(this.resumeUrl, "_blank");
     },
     goToAndela() {
       window.open(
@@ -104,6 +104,11 @@ export default {
     },
     goToGithub() {
       window.open("https://github.com/pross326", "_blank");
+    },
+  },
+  computed: {
+    resumeUrl() {
+      return new URL("../assets/resume2024.pdf", import.meta.url).href;
     },
   },
 };
@@ -148,20 +153,20 @@ export default {
 .headline {
   font-size: 2.4rem;
   font-weight: 700;
-  color: #4e6c8a;
+  color: #2c3e50;
   margin: 10px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subheading {
   font-size: 1.4rem;
-  color: #666;
+  color: #34495e;
   margin: 5px 0;
 }
 
 .location {
   font-size: 1.2rem;
-  color: #666;
+  color: #34495e;
   margin: 5px 0;
 }
 
@@ -270,6 +275,15 @@ export default {
 
   .info-col {
     align-items: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

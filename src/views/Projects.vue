@@ -1,13 +1,16 @@
 <template>
   <v-container class="projects-container" fluid>
     <!-- Featured Projects Section -->
-    <v-row class="projects-row" align="center" justify="center">
+    <v-row align="center" justify="center">
       <v-col cols="12" class="text-center">
         <h1 class="headline">Featured Projects</h1>
       </v-col>
       <v-col
-        cols="12"
+        xl="4"
+        lg="4"
         md="6"
+        sm="8"
+        xs="12"
         v-for="(project, index) in highlightedProjects"
         :key="index"
         v-scroll-reveal
@@ -17,11 +20,6 @@
           mx-auto
           @click="toggleExpand(project)"
         >
-          <v-img
-            :src="project.image"
-            :alt="project.title"
-            class="highlighted-project-image"
-          ></v-img>
           <v-card-title class="left-aligned-title">
             {{ project.title }}
           </v-card-title>
@@ -35,24 +33,33 @@
             <v-icon v-else>mdi-chevron-up</v-icon>
           </v-card-actions>
           <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
-            <v-card-text
-              v-show="project.expanded"
-              class="description-text left-aligned-text"
-              >{{ project.description }}</v-card-text
-            >
+            <div v-show="project.expanded" class="expandable-content">
+              <v-img
+                :src="project.image"
+                :alt="project.title"
+                class="highlighted-project-image"
+              ></v-img>
+              <v-divider style="padding: 5px"></v-divider>
+              <v-card-text class="description-text left-aligned-text">
+                {{ project.description }}
+              </v-card-text>
+            </div>
           </transition>
         </v-card>
       </v-col>
     </v-row>
 
     <!-- Other Projects Section -->
-    <v-row class="projects-row" align="center" justify="center">
+    <v-row align="center" justify="center">
       <v-col cols="12" class="text-center">
         <h2 class="headline">Other Projects</h2>
       </v-col>
       <v-col
-        cols="12"
-        md="4"
+        xl="3"
+        lg="4"
+        md="6"
+        sm="8"
+        xs="12"
         v-for="(project, index) in projects"
         :key="index"
         v-scroll-reveal
@@ -62,11 +69,6 @@
           mx-auto
           @click="toggleExpand(project)"
         >
-          <v-img
-            :src="project.image"
-            :alt="project.title"
-            class="project-image"
-          ></v-img>
           <v-card-title class="left-aligned-title">{{
             project.title
           }}</v-card-title>
@@ -75,11 +77,17 @@
             <v-icon v-else>mdi-chevron-up</v-icon>
           </v-card-actions>
           <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
-            <v-card-text
-              v-show="project.expanded"
-              class="description-text left-aligned-text"
-              >{{ project.description }}</v-card-text
-            >
+            <div v-show="project.expanded" class="expandable-content">
+              <v-img
+                :src="project.image"
+                :alt="project.title"
+                class="project-image"
+              ></v-img>
+              <v-divider style="padding: 5px"></v-divider>
+              <v-card-text class="description-text left-aligned-text">
+                {{ project.description }}
+              </v-card-text>
+            </div>
           </transition>
         </v-card>
       </v-col>
@@ -96,7 +104,7 @@ export default {
     return {
       highlightedProjects: [
         {
-          title: "Memento Mori App",
+          title: "Memento Mori",
           image: new URL("../assets/memento-mori.png", import.meta.url).href,
           description: `A Vue.js app that helps users reflect on the concept of "Memento Mori" and the Stoic philosophy of life. With the app, users enter their birthday and life expectancy and are shown a visual representation of how much of their life they have already lived and how much time they have left. As I've been reading about Stoicism and Memento Mori, I was inspired to create a user-friendly tool that makes these concepts accessible to a wider audience. It's a reminder to cherish each day and live life to the fullest. I'm grateful for the opportunity to bring this ancient philosophy into the modern world and make a positive impact on people's lives.`,
           link: "https://paulross-memento-mori.netlify.app/",
@@ -208,14 +216,15 @@ export default {
 .projects-container {
   padding: 40px;
   animation: fadeIn 1.5s ease-in-out;
+  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
 }
 
 .headline {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #4e6c8a;
+  color: #2c3e50;
   margin: 10px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .project-card,
@@ -223,16 +232,18 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #1c2631;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition:
     transform 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
+    box-shadow 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   margin: 20px;
   padding: 10px;
+  color: #d4d4d4;
 }
 
 .project-card:hover,
@@ -243,19 +254,20 @@ export default {
 .project-card.expanded,
 .highlighted-project-card.expanded {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .project-image,
 .highlighted-project-image {
   height: 200px;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
 }
 
 .left-aligned-title {
-  text-align: left;
+  text-align: center;
   font-weight: 600;
-  color: #333;
+  color: #d4d4d4;
   font-size: 1.3rem;
   margin: 10px 15px;
 }
@@ -273,6 +285,7 @@ export default {
     max-height 0.6s ease,
     opacity 0.6s ease;
   opacity: 0;
+  color: #d4d4d4;
 }
 
 .expanded .v-card-text {
@@ -286,7 +299,7 @@ export default {
 }
 
 .visit-btn {
-  background-color: #42b983;
+  background-color: #1abc9c;
   color: #fff !important;
   font-weight: 600;
   padding: 10px 20px;
@@ -298,7 +311,7 @@ export default {
 }
 
 .visit-btn:hover {
-  background-color: #369963;
+  background-color: #1abc9cab;
   transform: translateY(-2px);
 }
 
@@ -306,6 +319,11 @@ export default {
   cursor: pointer;
   margin-top: -20px;
   margin-bottom: -20px;
+}
+
+.expandable-content {
+  text-align: left;
+  padding: 0 10px;
 }
 
 @keyframes fadeIn {

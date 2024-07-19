@@ -3,7 +3,6 @@ import Home from "../views/Home.vue";
 import Projects from "../views/Projects.vue";
 import Contact from "../views/Contact.vue";
 import Review from "../views/Review.vue";
-import Resume from "../views/Resume.vue";
 import LeaveAReview from "../views/LeaveAReview.vue";
 
 const routes = [
@@ -16,11 +15,6 @@ const routes = [
     path: "/projects",
     name: "Projects",
     component: Projects,
-  },
-  {
-    path: "/resume",
-    name: "Resume",
-    component: Resume,
   },
   {
     path: "/reviews",

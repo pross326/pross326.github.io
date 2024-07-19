@@ -13,7 +13,6 @@
       <RouterLink class="router-link" to="/">Home</RouterLink>
       <RouterLink class="router-link" to="/projects">Projects</RouterLink>
       <RouterLink class="router-link" to="/contact">Contact</RouterLink>
-      <RouterLink class="router-link" to="/resume">Resume</RouterLink>
     </nav>
   </v-app-bar>
 </template>
