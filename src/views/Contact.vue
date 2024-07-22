@@ -121,6 +121,7 @@ export default {
   );
   animation: fadeIn 1.5s ease-in-out;
   padding: 20px;
+  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
 }
 
 .contact-form-card {

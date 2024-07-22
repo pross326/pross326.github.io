@@ -33,10 +33,22 @@
           </v-col>
           <v-col cols="12" md="7" class="info-col">
             <div class="info-container">
-              <h1 class="headline">Paul Ross</h1>
-              <p class="subheading">Web Developer | Front End Developer</p>
-              <p class="subheading">Former High School Math Teacher</p>
-              <p class="location">Rolesville, North Carolina</p>
+              <h1 class="headline">
+                <v-icon class="info-icon">mdi-account</v-icon>
+                Paul Ross
+              </h1>
+              <p class="subheading">
+                <v-icon class="info-icon">mdi-code-tags</v-icon>
+                Web Developer | Front End Developer
+              </p>
+              <p class="subheading">
+                <v-icon class="info-icon">mdi-school</v-icon>
+                Former High School Math Teacher
+              </p>
+              <p class="location">
+                <v-icon class="info-icon">mdi-map-marker</v-icon>
+                Rolesville, North Carolina
+              </p>
             </div>
             <div class="chips-container mt-4">
               <v-chip class="chip linkedin-chip mb-2" @click="goToLinkedIn">
@@ -150,24 +162,35 @@ export default {
   text-align: left;
 }
 
+.info-icon {
+  font-size: 1.8rem;
+  margin-right: 10px;
+}
+
 .headline {
   font-size: 2.4rem;
   font-weight: 700;
   color: #2c3e50;
   margin: 10px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
 }
 
 .subheading {
   font-size: 1.4rem;
   color: #34495e;
   margin: 5px 0;
+  display: flex;
+  align-items: center;
 }
 
 .location {
   font-size: 1.2rem;
   color: #34495e;
   margin: 5px 0;
+  display: flex;
+  align-items: center;
 }
 
 .contact-btn {
@@ -275,6 +298,15 @@ export default {
 
   .info-col {
     align-items: center;
+  }
+}
+
+@media (max-width: 1440px) {
+  .headline {
+    font-size: 2rem;
+  }
+  .subheading {
+    font-size: 1.3rem;
   }
 }
 
