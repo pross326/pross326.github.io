@@ -20,13 +20,15 @@
           mx-auto
           @click="toggleExpand(project)"
         >
+          <v-icon class="badge">mdi-star</v-icon>
           <v-card-title class="left-aligned-title">
             {{ project.title }}
           </v-card-title>
+          <v-divider style="padding: 5px"></v-divider>
           <v-card-actions class="justify-center">
-            <v-btn class="visit-btn" @click.stop="goToProject(project.link)">
-              Visit
-            </v-btn>
+            <v-chip class="visit-btn" @click.stop="goToProject(project.link)">
+              <v-icon left>mdi-open-in-new</v-icon>&nbsp;VISIT
+            </v-chip>
           </v-card-actions>
           <v-card-actions class="justify-center expand-indicator">
             <v-icon v-if="!project.expanded">mdi-chevron-down</v-icon>
@@ -222,7 +224,7 @@ export default {
 .headline {
   font-size: 2.4rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #ffffff;
   margin: 10px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -232,8 +234,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #1c2631;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #2c2c2c; /* Dark background color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out,
@@ -243,18 +245,32 @@ export default {
   overflow: hidden;
   margin: 20px;
   padding: 10px;
-  color: #d4d4d4;
+  color: #d4d4d4; /* Light text color */
+  border: 2px solid transparent;
 }
 
 .project-card:hover,
 .highlighted-project-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .project-card.expanded,
 .highlighted-project-card.expanded {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+}
+
+.highlighted-project-card {
+  border-color: #1abc9c;
+  position: relative;
+}
+
+.highlighted-project-card .badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #1abc9c;
+  font-size: 24px;
 }
 
 .project-image,
@@ -267,14 +283,14 @@ export default {
 .left-aligned-title {
   text-align: center;
   font-weight: 600;
-  color: #d4d4d4;
+  color: #ffffff; /* Light text color */
   font-size: 1.3rem;
   margin: 10px 15px;
 }
 
 .left-aligned-text {
   text-align: left;
-  color: #555;
+  color: #bbbbbb; /* Light text color */
   padding: 0 15px 15px;
 }
 
@@ -285,7 +301,7 @@ export default {
     max-height 0.6s ease,
     opacity 0.6s ease;
   opacity: 0;
-  color: #d4d4d4;
+  color: #d4d4d4; /* Light text color */
 }
 
 .expanded .v-card-text {
@@ -302,9 +318,9 @@ export default {
   background-color: #1abc9c;
   color: #fff !important;
   font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 36px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.1em;
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
@@ -312,7 +328,6 @@ export default {
 
 .visit-btn:hover {
   background-color: #1abc9cab;
-  transform: translateY(-2px);
 }
 
 .expand-indicator {

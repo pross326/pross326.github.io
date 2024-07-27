@@ -4,16 +4,105 @@
       <v-col cols="12" class="text-center">
         <h1 class="headline">Reviews</h1>
       </v-col>
-      <v-col cols="12" class="text-center mt-4">
-        <div class="leave-review-container">
-          <span class="review-note">Have we worked together?</span>
-          <v-btn color="primary" class="review-btn" @click="goToLeaveAReview">
-            Leave a Review
-          </v-btn>
-        </div>
+      <v-col
+        cols="12"
+        class="text-center mt-4 leave-review-container"
+        :class="{ hidden: showForm }"
+      >
+        <span class="review-note">Have we worked together?</span>
+        <v-btn color="primary" class="review-btn" @click="toggleReviewForm">
+          Leave a Review
+        </v-btn>
       </v-col>
-      <v-col cols="12" class="reviews-col">
+      <v-col
+        cols="12"
+        xl="4"
+        lg="6"
+        md="8"
+        sm="8"
+        class="reviews-col leave-review-form"
+        :class="{ hidden: !showForm }"
+      >
+        <v-card class="review-form-card mx-auto">
+          <v-card-title class="headline-2">Leave a Review</v-card-title>
+          <v-card-text>
+            <p class="note">
+              Thank you for taking the time to share your experience working
+              with me. Your feedback is invaluable and will be published on my
+              portfolio to help me attract new opportunities. I truly appreciate
+              your support and participation in my journey.
+            </p>
+            <v-form
+              ref="reviewForm"
+              v-model="valid"
+              @submit.prevent="submitReview"
+            >
+              <v-text-field
+                v-model="newReview.name"
+                label="Name"
+                :rules="[(v) => !!v || 'Name is required']"
+                required
+                name="name"
+              ></v-text-field>
+              <v-select
+                v-model="newReview.placeOfWork"
+                :items="companies"
+                label="Company"
+                :rules="[(v) => !!v || 'Company is required']"
+                required
+                name="company"
+              ></v-select>
+              <v-text-field
+                v-model="newReview.position"
+                label="Position"
+                :rules="[(v) => !!v || 'Position is required']"
+                required
+                name="position"
+              ></v-text-field>
+              <v-text-field
+                v-model="newReview.email"
+                label="Email"
+                :rules="[
+                  (v) => !!v || 'Email is required',
+                  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+                ]"
+                required
+                name="email"
+              ></v-text-field>
+              <v-textarea
+                v-model="newReview.text"
+                label="Describe your experience working with me."
+                :rules="[(v) => !!v || 'Review is required']"
+                required
+                name="message"
+              ></v-textarea>
+              <v-btn
+                type="submit"
+                color="primary"
+                class="mt-4"
+                :disabled="!valid"
+                >Submit</v-btn
+              >
+              <v-btn
+                color="secondary"
+                class="mt-4 ml-4"
+                @click="toggleReviewForm"
+              >
+                Cancel
+              </v-btn>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="12" class="reviews-col" v-if="!showForm">
         <v-row class="reviews-grid">
+          <v-col
+            cols="12"
+            class="text-center no-reviews"
+            v-if="reviews.length === 0"
+          >
+            <p>No reviews yet. New reviews will appear here shortly.</p>
+          </v-col>
           <v-col
             v-for="(review, index) in reviews"
             :key="index"
@@ -37,6 +126,10 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" :timeout="5000" top outlined color="success">
+      {{ snackbarMessage }}
+      <v-btn color="white" text @click="snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -45,37 +138,58 @@ export default {
   name: "Reviews",
   data() {
     return {
-      reviews: [
-        {
-          name: "John Doe",
-          placeOfWork: "ABC Corp",
-          position: "Manager",
-          text: "Paul was a fantastic colleague!",
-        },
-        {
-          name: "Jane Smith",
-          placeOfWork: "XYZ Inc",
-          position: "Developer",
-          text: "Paul's expertise was invaluable to our project.",
-        },
-        {
-          name: "Emily Johnson",
-          placeOfWork: "Teleflex",
-          position: "Senior Engineer",
-          text: "Paul is a great team player!",
-        },
-        {
-          name: "Michael Brown",
-          placeOfWork: "SEO",
-          position: "SEO Specialist",
-          text: "Paul's skills in web development are top-notch.",
-        },
+      reviews: [],
+      newReview: {
+        name: "",
+        placeOfWork: "",
+        position: "",
+        email: "",
+        text: "",
+      },
+      companies: [
+        "Teleflex",
+        "SEO",
+        "Andela",
+        "Greatminds",
+        "Hyde",
+        "Humanities",
       ],
+      valid: false,
+      snackbar: false,
+      snackbarMessage: "",
+      showForm: false,
     };
   },
   methods: {
-    goToLeaveAReview() {
-      this.$router.push({ path: "/leave-a-review" });
+    toggleReviewForm() {
+      this.showForm = !this.showForm;
+    },
+    async submitReview() {
+      if (this.$refs.reviewForm.validate()) {
+        try {
+          await this.sendEmail();
+          this.snackbarMessage =
+            "Thank you for your review! Your review has been sent successfully.";
+          this.snackbar = true;
+          this.$refs.reviewForm.reset();
+          this.valid = false; // Reset form validity
+          this.toggleReviewForm();
+        } catch (error) {
+          console.error("Failed to send review:", error);
+          this.snackbarMessage =
+            "Failed to send your review. Please try again.";
+          this.snackbar = true;
+        }
+      }
+    },
+    sendEmail() {
+      const form = this.$refs.reviewForm.$el;
+      const formData = new FormData(form);
+      return fetch("https://formspree.io/f/mzzppagp", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
     },
   },
 };
@@ -83,16 +197,14 @@ export default {
 
 <style scoped>
 .reviews-container {
-  min-height: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(74, 144, 226, 0.2),
-    rgba(66, 185, 131, 0.2)
-  );
+  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
   animation: fadeIn 1.5s ease-in-out;
+  width: 100%;
+  overflow-x: hidden;
   padding: 20px;
 }
 
@@ -103,13 +215,22 @@ export default {
 .headline {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #4e6c8a;
-  margin: 10px 0;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headline-2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 20px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .reviews-col {
   margin-top: 20px;
+  width: 100%;
 }
 
 .reviews-grid {
@@ -121,7 +242,7 @@ export default {
 .review-column {
   display: flex;
   align-items: stretch;
-  max-width: 90%; /* Adjusted max width */
+  max-width: 90%;
 }
 
 .review-card {
@@ -129,19 +250,19 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #2c2c2c; /* Dark background color */
   border-radius: 12px;
   margin: 10px;
-  width: 100%; /* Ensure cards take up the full width within the column */
+  width: 100%;
+  color: #ffffff;
 }
 
 .review-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .review-header {
@@ -151,13 +272,13 @@ export default {
 .review-header h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #4e6c8a;
+  color: #ffffff;
 }
 
 .review-position {
   margin: 0;
   font-size: 1rem;
-  color: #666;
+  color: #bbb;
 }
 
 blockquote {
@@ -165,28 +286,48 @@ blockquote {
   margin: 0;
   padding: 0 20px;
   position: relative;
+  color: #ffffff;
 }
 
 blockquote:before {
   content: "“";
   font-size: 4rem;
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.1);
   position: absolute;
   top: -10px;
   left: -10px;
 }
 
-.leave-review-container {
+.no-reviews {
+  margin-top: 20px;
+  color: #2c3e50;
+}
+
+.leave-review-container,
+.leave-review-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  transition:
+    opacity 0.5s ease-in-out,
+    display 0.5s ease-in-out;
+}
+
+.leave-review-container.hidden,
+.leave-review-form.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.leave-review-form {
+  width: 100%;
 }
 
 .review-note {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #4e6c8a;
+  color: #2c3e50;
 }
 
 .review-btn {
@@ -197,7 +338,37 @@ blockquote:before {
 
 .review-btn:hover {
   background-color: #369963;
-  transform: translateY(-2px);
+}
+
+.review-form-card {
+  padding: 20px;
+  color: white;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.review-form-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.note {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.v-btn {
+  margin-top: 10px;
+}
+
+.v-snackbar {
+  border: 2px solid #4caf50;
+  color: white;
 }
 
 @media (max-width: 600px) {
@@ -205,7 +376,12 @@ blockquote:before {
     font-size: 2rem;
   }
 
-  .v-card {
+  .headline-2 {
+    font-size: 2rem;
+  }
+
+  .review-form-card,
+  .review-card {
     margin: 0 auto;
   }
 
@@ -213,7 +389,8 @@ blockquote:before {
     flex-direction: column;
   }
 
-  .leave-review-container {
+  .leave-review-container,
+  .leave-review-form {
     flex-direction: column;
     gap: 10px;
   }

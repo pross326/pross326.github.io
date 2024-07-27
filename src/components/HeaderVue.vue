@@ -12,6 +12,7 @@
     <nav class="hidden-sm-and-down">
       <RouterLink class="router-link" to="/">Home</RouterLink>
       <RouterLink class="router-link" to="/projects">Projects</RouterLink>
+      <RouterLink class="router-link" to="/reviews">Reviews</RouterLink>
       <RouterLink class="router-link" to="/contact">Contact</RouterLink>
     </nav>
   </v-app-bar>
@@ -25,9 +26,10 @@ export default {
 
 <style scoped>
 #header {
-  background-color: #2b3a47; /* Darker background for header */
-  color: #ecf0f1; /* Light text for better visibility */
-  z-index: 1001; /* Ensure header is above other elements */
+  background-color: #2b3a47;
+  color: #ecf0f1;
+  z-index: 1001;
+  position: relative;
 }
 
 nav {
@@ -40,15 +42,15 @@ nav {
 }
 
 nav a.router-link {
-  color: #ecf0f1; /* Light text for better visibility */
+  color: #ecf0f1;
 }
 
 nav a.router-link-exact-active {
-  color: #1abc9c; /* Highlight color for active link */
+  color: #1abc9c;
 }
 
 nav a.router-link-exact-active:hover {
-  color: #16a085; /* Darker shade for hover state */
+  color: #16a085;
 }
 
 #title {
@@ -63,14 +65,14 @@ nav a.router-link-exact-active:hover {
 }
 
 #title:hover {
-  color: #1abc9c; /* Highlight color for hover state */
+  color: #1abc9c;
 }
 
 .router-link {
   padding: 15px;
   font-weight: bold;
   font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
-  color: #ecf0f1; /* Light text for better visibility */
+  color: #ecf0f1;
   text-decoration: none;
   transition:
     color 0.3s ease,
@@ -78,7 +80,7 @@ nav a.router-link-exact-active:hover {
 }
 
 .router-link:hover {
-  color: #1abc9c; /* Highlight color for hover state */
+  color: #1abc9c;
   transform: translateY(-2px);
 }
 

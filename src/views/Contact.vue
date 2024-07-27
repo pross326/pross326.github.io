@@ -7,8 +7,8 @@
           <v-card-text>
             <v-form
               ref="contactForm"
-              @submit.prevent="submitForm"
               v-model="valid"
+              @submit.prevent="submitForm"
             >
               <v-text-field
                 v-model="form.name"
@@ -41,7 +41,13 @@
                 required
                 name="message"
               ></v-textarea>
-              <v-btn type="submit" color="primary" class="mt-4">Submit</v-btn>
+              <v-btn
+                type="submit"
+                color="primary"
+                class="mt-4"
+                :disabled="!valid"
+                >Submit</v-btn
+              >
             </v-form>
             <p class="alternative-contact">
               Or email me directly at
@@ -84,9 +90,7 @@ export default {
             "Your message has been sent! I will contact you within 1-2 business days.";
           this.snackbar = true;
           this.$refs.contactForm.reset();
-          setTimeout(() => {
-            this.$router.push({ path: "/" });
-          }, 5000);
+          this.valid = false; // Reset form validity
         } catch (error) {
           console.error("Failed to send message:", error);
           this.snackbarMessage =
@@ -114,42 +118,51 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(74, 144, 226, 0.2),
-    rgba(66, 185, 131, 0.2)
-  );
+  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
   animation: fadeIn 1.5s ease-in-out;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
 }
 
 .contact-form-card {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #2c2c2c;
+  color: white;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
 }
 
 .contact-form-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .headline {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #4e6c8a;
+  color: #ffffff; /* Light text color */
   margin: 10px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.v-text-field,
+.v-textarea {
+  color: #ffffff;
+}
+
+.v-label {
+  color: #bbb !important;
+}
+
+.v-input__control {
+  color: #ffffff !important;
 }
 
 .alternative-contact {
   margin-top: 20px;
   text-align: center;
+  color: #ffffff;
 }
 
 .alternative-contact a {

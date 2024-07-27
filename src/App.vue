@@ -37,7 +37,7 @@ export default {
         { text: "Home", route: "/" },
         { text: "Projects", route: "/projects" },
         { text: "Contact", route: "/contact" },
-        { text: "Resume", route: "/resume" },
+        { text: "Reviews", route: "/reviews" },
       ],
     };
   },
