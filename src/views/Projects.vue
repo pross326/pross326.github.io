@@ -28,14 +28,11 @@
           ></v-img>
           <v-card-title class="title">
             {{ project.title }}
-            <v-icon class="expand-icon">mdi-magnify</v-icon>
-          </v-card-title>
-          <v-divider></v-divider>
-          <v-card-actions class="actions">
             <v-chip class="visit-btn" @click.stop="goToProject(project.link)">
               <v-icon left>mdi-open-in-new</v-icon> Visit
             </v-chip>
-          </v-card-actions>
+          </v-card-title>
+          <v-divider></v-divider>
         </v-card>
       </v-col>
     </v-row>
@@ -73,29 +70,28 @@
     <!-- Dialog -->
     <v-dialog v-model="dialog" max-width="600px">
       <v-card>
+        <v-card-title class="dialog-title">
+          {{ selectedProject.title }}
+        </v-card-title>
         <v-img
           :src="selectedProject.image"
           :alt="selectedProject.title"
           max-height="400px"
           contain
         ></v-img>
-        <v-card-title>{{ selectedProject.title }}</v-card-title>
         <v-card-text class="description">
           {{ selectedProject.description }}
         </v-card-text>
-        <v-card-actions
-          v-if="selectedProject.link && selectedProject.isHighlighted"
-        >
+        <v-card-actions>
+          <v-spacer></v-spacer>
           <v-btn
             color="primary"
             text
+            v-if="selectedProject.link && selectedProject.isHighlighted"
             @click="goToProject(selectedProject.link)"
           >
             Visit Project
           </v-btn>
-          <v-spacer></v-spacer>
-        </v-card-actions>
-        <v-card-actions>
           <v-btn color="secondary" text @click="closeDialog">Close</v-btn>
         </v-card-actions>
       </v-card>
@@ -258,9 +254,9 @@ export default {
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the button horizontally */
   align-items: center;
-  padding: 0 20px 20px;
+  padding: 20px; /* Ensure the padding is equal around the button */
 }
 
 .visit-btn {
@@ -268,7 +264,7 @@ export default {
   color: #ffffff;
   font-weight: 600;
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 10px 20px; /* Equal padding on all sides */
   transition: background-color 0.3s ease;
 }
 
