@@ -1,5 +1,5 @@
 <template>
-  <v-container class="projects-container" fluid>
+  <v-container class="projects-container fade-in" fluid>
     <!-- Featured Projects Section -->
     <v-row align="center" justify="center">
       <v-col cols="12" class="text-center">
@@ -205,6 +205,7 @@ export default {
 .projects-container {
   padding: 40px;
   background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .headline {
@@ -292,6 +293,15 @@ export default {
 
   .v-card-title {
     font-size: 1.8rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
