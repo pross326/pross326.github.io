@@ -1,78 +1,46 @@
 <template>
-  <v-container class="home-container" fluid>
-    <v-row class="home-row" align="center" justify="center">
-      <v-col cols="12" md="7" sm="7" xs="7" class="text-center pa-4">
-        <v-row align="center" justify="center">
-          <v-col
-            cols="12"
-            md="5"
-            sm="7"
-            xs="7"
-            class="d-flex justify-center image-col"
-            v-if="showImage"
-          >
-            <v-img
-              :src="fullBodyImage"
-              width="150"
-              alt="Paul Ross"
-              class="full-body-image"
-            ></v-img>
-          </v-col>
-          <v-col
-            cols="6"
-            md="5"
-            class="d-flex justify-center headshot-col"
-            v-if="!showImage"
-          >
-            <v-img
-              :src="headshotImage"
-              width="100"
-              alt="Paul Ross"
-              class="headshot-image"
-            ></v-img>
-          </v-col>
-          <v-col cols="12" md="7" class="info-col">
-            <div class="info-container">
+  <v-container class="home-container" id="home" fluid>
+    <v-row class="home-row" align="center">
+      <!-- Info Section -->
+      <v-col cols="12" md="10" class="text-content">
+        <v-card class="info-card">
+          <div class="card-styling">
+            <div v-if="isMobile" style="display: flex; justify-self: start; padding-left: 25px;">
+              <v-img :src="fullBodyImage" alt="Paul Ross" class="header-image" />
+            </div>
+            <div style="margin-left: 16px;">
               <h1 class="headline">
-                <v-icon class="info-icon">mdi-account</v-icon>
                 Paul Ross
               </h1>
               <p class="subheading">
-                <v-icon class="info-icon">mdi-code-tags</v-icon>
                 Web Developer | Front End Developer
               </p>
-              <p class="subheading">
-                <v-icon class="info-icon">mdi-school</v-icon>
-                Former High School Math Teacher
-              </p>
               <p class="location">
-                <v-icon class="info-icon">mdi-map-marker</v-icon>
                 Rolesville, North Carolina
               </p>
+              <div class="chips-container">
+                <v-btn class="chip-btn linkedin" @click="goToLinkedIn">
+                  LinkedIn
+                </v-btn>
+                <v-btn class="chip-btn resume" @click="goToResume">
+                  Resume
+                </v-btn>
+                <v-btn class="chip-btn andela" @click="goToAndela">
+                  Andela
+                </v-btn>
+                <v-btn class="chip-btn github" @click="goToGithub">
+                  GitHub
+                </v-btn>
+              </div>
+              <v-btn class="contact-btn" @click="scrollToContact" block>
+                Get in Touch
+              </v-btn>
             </div>
-            <div class="chips-container mt-4">
-              <v-chip class="chip linkedin-chip mb-2" @click="goToLinkedIn">
-                <v-icon left>mdi-linkedin</v-icon>
-                LinkedIn
-              </v-chip>
-              <v-chip class="chip resume-chip mb-2" @click="goToResume">
-                <v-icon left>mdi-file-document-outline</v-icon>
-                Resume
-              </v-chip>
-              <v-chip class="chip andela-chip mb-2" @click="goToAndela">
-                <v-icon left>mdi-account-network</v-icon>
-                Andela
-              </v-chip>
-              <v-chip class="chip github-chip mb-2" @click="goToGithub">
-                <v-icon left>mdi-github</v-icon>
-                GitHub
-              </v-chip>
+            <div v-if="!isMobile" style="display: flex; justify-self: start; padding-left: 25px;">
+              <v-img :src="fullBodyImage" alt="Paul Ross" class="header-image" />
             </div>
-            <v-btn class="contact-btn mt-4" @click="goToContact">
-              Contact Me
-            </v-btn>
-          </v-col>
-        </v-row>
+          </div>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -84,8 +52,9 @@ export default {
   data() {
     return {
       showImage: true,
-      fullBodyImage: new URL("../assets/full-body.png", import.meta.url).href,
-      headshotImage: new URL("../assets/headshot.png", import.meta.url).href,
+      windowWidth: window.innerWidth,
+      fullBodyImage: new URL('../assets/headshot4.png', import.meta.url).href,
+      headshotImage: new URL('../assets/headshot4.png', import.meta.url).href,
     };
   },
   created() {
@@ -95,227 +64,241 @@ export default {
   beforeDestroy() {
     window.removeEventListener("resize", this.updateImageVisibility);
   },
+  computed: {
+    isMobile() {
+      return this.windowWidth <= 600;
+    }
+  },
   methods: {
     updateImageVisibility() {
       this.showImage = window.innerWidth > 600;
     },
-    goToContact() {
-      this.$router.push({ path: "/contact" });
+    scrollToContact() {
+      const contactSection = document.querySelector('#contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
     },
     goToLinkedIn() {
       window.open("https://www.linkedin.com/in/paul-ross-ny-nc/", "_blank");
     },
     goToResume() {
-      window.open(this.resumeUrl, "_blank");
+      window.open(new URL('../assets/resume2025.pdf', import.meta.url).href, "_blank");
     },
     goToAndela() {
-      window.open(
-        "https://client.andela.com/talent/profile/95e035e9-b743-4d4e-8fba-59405e7b8ab5",
-        "_blank"
-      );
+      window.open("https://client.andela.com/talent/profile/95e035e9-b743-4d4e-8fba-59405e7b8ab5", "_blank");
     },
     goToGithub() {
       window.open("https://github.com/pross326", "_blank");
-    },
-  },
-  computed: {
-    resumeUrl() {
-      return new URL("../assets/resume2024.pdf", import.meta.url).href;
     },
   },
 };
 </script>
 
 <style scoped>
+/* General Styling */
 .home-container {
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(50, 127, 214, 0.74), #42b983bb);
-  animation: fadeIn 1.5s ease-in-out;
-  padding: 0 !important;
-  width: 100%;
-  overflow-x: hidden;
+  background: #101820;
+  color: #e2e8f0;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  padding-top: 4em;
 }
 
-.home-row {
-  margin: 0;
-  width: 100%;
+.main-card {
+  width: 95%;
+  border-radius: 24px;
+  border: 8px solid black;
+
+  margin: auto;
+  background: linear-gradient(0deg, #020917, #2563EB);
+  display: flex;
+  padding: 24px;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.full-body-image {
-  max-width: 70%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.headshot-image {
-  border-radius: 50%;
-}
-
-.info-col {
+.text-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   text-align: left;
+  gap: 10px;
+  justify-content: center;
+  margin: auto;
 }
 
-.info-icon {
-  font-size: 1.8rem;
-  margin-right: 10px;
+.card-styling {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-card {
+  width: 85vw;
+  height: 80vh;
+  background: linear-gradient(0deg, #020917, #2563EB);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  color: #ffffff;
+  border: 8px solid rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+
+.header-image {
+  width: 230px;
+  height: 230px;
+  padding-left: 20px;
+  border-radius: 16px;
 }
 
 .headline {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin: 10px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 5px;
+  border-bottom: 3px solid #ffffff;
 }
 
 .subheading {
-  font-size: 1.4rem;
-  color: #34495e;
-  margin: 5px 0;
-  display: flex;
-  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #d1d5db;
 }
 
 .location {
-  font-size: 1.2rem;
-  color: #34495e;
-  margin: 5px 0;
-  display: flex;
-  align-items: center;
-}
-
-.contact-btn {
-  background-color: #42b983;
-  color: #fff;
-  transition:
-    background-color 0.3s,
-    transform 0.3s;
-}
-
-.contact-btn:hover {
-  background-color: #369963;
-  transform: translateY(-2px);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #d1d5db;
 }
 
 .chips-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
 }
 
-.chip {
+.chip-btn {
   cursor: pointer;
-  font-weight: bold;
-  padding: 0 16px;
-  height: 36px;
-  border-radius: 18px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s,
-    transform 0.3s;
-  display: flex;
-  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.linkedin-chip {
-  background-color: #1e88e5;
-  color: white;
+.chip-btn.linkedin {
+  background: linear-gradient(180deg, #0077b5, #004c8c);
 }
 
-.resume-chip {
-  background-color: #d32f2f;
-  color: white;
+.chip-btn.resume {
+  background: linear-gradient(180deg, #ff6a00, #cc5200);
 }
 
-.andela-chip {
-  background-color: #ffca28;
-  color: white;
+.chip-btn.andela {
+  background: linear-gradient(180deg, #00c4cc, #007e80);
 }
 
-.github-chip {
-  background-color: #333;
-  color: white;
+.chip-btn.github {
+  background: linear-gradient(180deg, #333333, #000000);
 }
 
-.chip:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.chip-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+.contact-btn {
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(0deg, #020917, #2563EB);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile-Only Adjustments */
+/* Mobile-Only Adjustments */
 @media (max-width: 600px) {
+  .info-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .info-card {
+    padding: 16px;
+    /* Adjust height for better fit */
+  }
+
+  .card-styling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-image {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 16px;
+    /* Add spacing below the image */
+  }
+
   .headline {
     font-size: 1.8rem;
+    margin-bottom: 8px;
   }
 
   .subheading {
     font-size: 1rem;
+    margin-bottom: 4px;
   }
 
   .location {
     font-size: 0.9rem;
+    margin-bottom: 12px;
   }
 
   .chips-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
   }
 
-  .chip {
-    width: 100%;
-    justify-content: center;
+  .chip-btn {
+    width: 40%;
+    font-size: 0.9rem;
+    padding: 5px;
   }
 
   .contact-btn {
-    width: 100%;
-    margin-bottom: 20px;
-    justify-content: center;
-  }
-
-  .image-col {
-    display: none;
-  }
-
-  .headshot-col {
-    display: flex;
-  }
-
-  .info-container {
-    margin-bottom: 20px;
-  }
-
-  .info-col {
-    align-items: center;
-  }
-}
-
-@media (max-width: 1440px) {
-  .headline {
-    font-size: 2rem;
-  }
-  .subheading {
-    font-size: 1.3rem;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+    font-size: 0.9rem;
+    margin-top: 16px;
   }
 }
 </style>

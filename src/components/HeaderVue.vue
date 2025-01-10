@@ -1,103 +1,99 @@
 <template>
-  <v-app-bar id="header" :elevation="8" app color="grey-darken-4">
-    <v-toolbar-title class="text-h5" id="title">
-      <RouterLink class="router-link" to="/">Paul's Portfolio</RouterLink>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
-    <!-- Menu Icon for Mobile -->
-    <v-btn icon @click="$emit('toggleDrawer')" class="d-md-none">
-      <v-icon>mdi-menu</v-icon>
-    </v-btn>
-    <!-- Regular Navigation for Desktop -->
-    <nav class="hidden-sm-and-down">
-      <RouterLink class="router-link" to="/">Home</RouterLink>
-      <RouterLink class="router-link" to="/projects">Projects</RouterLink>
-      <RouterLink class="router-link" to="/reviews">Reviews</RouterLink>
-      <RouterLink class="router-link" to="/contact">Contact</RouterLink>
+  <div class="floating-header" :class="{ hidden: isHidden }">
+    <div class="logo">
+      <span>PR</span>
+    </div>
+    <nav class="nav-links">
+      <a @click.prevent="scrollToSection('home')">Home</a>
+      <a @click.prevent="scrollToSection('projects')">Projects</a>
+      <a @click.prevent="scrollToSection('contact')">Contact</a>
     </nav>
-  </v-app-bar>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "HeaderVue",
+  data() {
+    return {
+      lastScrollY: 0,
+      isHidden: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    scrollToSection(id) {
+      // Locate the section based on the ID within the entire app
+      const section = document.querySelector(`[id="${id}"]`);
+      if (section) {
+        const headerHeight = document.querySelector(".floating-header").offsetHeight;
+        const sectionPosition = section.offsetTop - headerHeight; // Adjust for sticky header
+        window.scrollTo({
+          top: sectionPosition,
+          behavior: "smooth", // Smooth scrolling
+        });
+      }
+    },
+    handleScroll() {
+      const currentScrollY = window.scrollY;
+      this.isHidden = currentScrollY > this.lastScrollY && currentScrollY > 100; // Hide header on scroll down
+      this.lastScrollY = currentScrollY;
+    },
+  },
 };
 </script>
 
 <style scoped>
-#header {
-  background-color: #2b3a47;
-  color: #ecf0f1;
-  z-index: 1001;
-  position: relative;
-}
-
-nav {
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding-right: 30px;
+.floating-header {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.95); /* Darker blue tone */
+  border-radius: 50px;
+  padding: 10px 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-nav a.router-link {
-  color: #ecf0f1;
+.floating-header.hidden {
+  transform: translate(-50%, -100%);
+  opacity: 0;
 }
 
-nav a.router-link-exact-active {
-  color: #1abc9c;
-}
-
-nav a.router-link-exact-active:hover {
-  color: #16a085;
-}
-
-#title {
-  font-size: clamp(1.5rem, 2.5vw + 1rem, 3rem);
+.logo {
+  font-size: 1.8rem;
   font-weight: bold;
   text-transform: uppercase;
+  color: #2563eb; /* Vibrant blue */
   letter-spacing: 0.1em;
-  transition:
-    transform 0.3s ease,
-    color 0.3s ease;
-  white-space: nowrap;
 }
 
-#title:hover {
-  color: #1abc9c;
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
-.router-link {
-  padding: 15px;
+.nav-links a {
+  color: #e2e8f0; /* Light text */
+  text-transform: uppercase;
   font-weight: bold;
-  font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
-  color: #ecf0f1;
   text-decoration: none;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
-.router-link:hover {
-  color: #1abc9c;
+.nav-links a:hover {
+  color: #2563eb; /* Subtle accent */
   transform: translateY(-2px);
-}
-
-@media (max-width: 500px) {
-  #title {
-    font-size: 1.2em;
-    max-width: 160px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  nav a.router-link {
-    font-size: 1em;
-  }
-
-  .router-link {
-    font-size: 1em;
-  }
 }
 </style>
