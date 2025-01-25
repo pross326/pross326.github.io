@@ -1,40 +1,44 @@
 <template>
   <v-container class="contact-container" id="contact" fluid>
-    <v-row justify="center">
-      <v-col cols="12" md="8">
+    <v-row align="center" style="display: flex; justify-content: center;">
+      <v-col cols="12" md="10" class="text-content">
+        <v-card class="info-card">
+          <div class="card-styling">
+            <div style="margin-left: 16px;">
+              <h1 class="headline">Get in Touch</h1>
+              <p class="subheading">
+                Have a question or want to work together? Let me know below!
+              </p>
 
-        <!-- Contact Card -->
-        <v-card class="contact-card" elevation="2">
-          <div class="header-container"></div>
-          <h1 class="section-title">Get in Touch</h1>
+              <v-form ref="contactForm" v-model="valid" @submit.prevent="submitForm">
+                <!-- Form Fields -->
+                <v-text-field v-model="form.name" label="Your Name" outlined dense class="input-field"
+                  :rules="[(v) => !!v || 'Name is required']"></v-text-field>
 
-          <v-form ref="contactForm" v-model="valid" @submit.prevent="submitForm">
-            <!-- Form Fields -->
-            <v-text-field v-model="form.name" label="Your Name" outlined dense class="input-field"
-              :rules="[(v) => !!v || 'Name is required']"></v-text-field>
+                <v-text-field v-model="form.email" label="Your Email" outlined dense class="input-field" :rules="[
+                  (v) => !!v || 'Email is required',
+                  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+                ]"></v-text-field>
 
-            <v-text-field v-model="form.email" label="Your Email" outlined dense class="input-field" :rules="[
-              (v) => !!v || 'Email is required',
-              (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-            ]"></v-text-field>
+                <v-text-field v-model="form.subject" label="Subject" outlined dense class="input-field"
+                  :rules="[(v) => !!v || 'Subject is required']"></v-text-field>
 
-            <v-text-field v-model="form.subject" label="Subject" outlined dense class="input-field"
-              :rules="[(v) => !!v || 'Subject is required']"></v-text-field>
+                <v-textarea v-model="form.message" label="Your Message" outlined dense rows="4" class="input-field"
+                  :rules="[(v) => !!v || 'Message is required']"></v-textarea>
 
-            <v-textarea v-model="form.message" label="Your Message" outlined dense rows="4" class="input-field"
-              :rules="[(v) => !!v || 'Message is required']"></v-textarea>
+                <!-- Submit Button -->
+                <v-btn class="contact-btn" :disabled="!valid" type="submit" block>
+                  Send Message
+                </v-btn>
+              </v-form>
 
-            <!-- Submit Button -->
-            <v-btn class="submit-btn" :disabled="!valid" type="submit" block>
-              Send Message
-            </v-btn>
-          </v-form>
-
-          <!-- Alternative Contact -->
-          <p class="alternative-contact">
-            Or email me directly at:
-            <a href="mailto:pross326@gmail.com">pross326@gmail.com</a>
-          </p>
+              <!-- Alternative Contact -->
+              <p class="location">
+                Or email me directly at:
+                <a href="mailto:pross326@gmail.com">pross326@gmail.com</a>
+              </p>
+            </div>
+          </div>
         </v-card>
       </v-col>
     </v-row>
@@ -64,47 +68,63 @@ export default {
 </script>
 
 <style scoped>
-/* Overall Container */
-#contact {
-  background: radial-gradient(circle at center, #101820, #0f172a);
-  color: #e2e8f0;
-  font-family: "Inter", sans-serif;
-  padding: 20px 20px;
-}
-
+/* General Styling */
 .contact-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-/* Card Design */
-.contact-card {
-  padding: 40px 30px;
-  background: linear-gradient(135deg, #1e293b, #16202e);
-  border: 1px solid rgba(37, 99, 235, 0.5);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
-  text-align: center;
+  justify-content: center;
+  background: #101820;
   color: #e2e8f0;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  padding-top: 4em;
+  margin: auto;
 }
 
-.header-container {
+.text-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+}
+
+.info-card {
+  width: 85vw;
+  height: auto;
+  background: linear-gradient(0deg, #020917, #2563EB);
+  border-radius: 16px;
+  border: 8px solid black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  color: #ffffff;
+}
+
+.card-styling {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Header Styles */
+.headline {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #ffffff;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #d1d5db;
   margin-bottom: 20px;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #e2e8f0;
-  margin-bottom: 1em;
-}
-
-/* Input Fields */
+/* Form Fields */
 .input-field {
   margin-bottom: 20px;
 }
@@ -128,56 +148,53 @@ export default {
 }
 
 /* Submit Button */
-.submit-btn {
-  background: linear-gradient(135deg, #2563eb, #4098ff);
-  color: white;
+.contact-btn {
   font-weight: bold;
-  text-transform: uppercase;
+  padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
-  transition: all 0.3s ease;
+  background: linear-gradient(0deg, #020917, #2563EB);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+
 }
 
-.submit-btn:hover {
-  background: linear-gradient(135deg, #4098ff, #2563eb);
-  box-shadow: 0 6px 14px rgba(64, 152, 255, 0.5);
+.contact-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.location {
+  margin-top: 12px;
 }
 
 /* Alternative Contact */
-.alternative-contact {
-  margin-top: 20px;
-  font-size: 1rem;
-  color: #94a3b8;
-}
-
-.alternative-contact a {
+.location a {
   color: #38bdf8;
   text-decoration: none;
   font-weight: bold;
 }
 
-.alternative-contact a:hover {
+.location a:hover {
   color: #4098ff;
   text-decoration: underline;
 }
 
-/* Mobile Responsive */
+/* Mobile Adjustments */
 @media (max-width: 600px) {
-  .section-title {
+  .headline {
     font-size: 2rem;
   }
 
-  .contact-card {
-    padding: 20px;
+  .subheading {
+    font-size: 1rem;
+    margin-bottom: 10px;
   }
 
-  .submit-btn {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .alternative-contact {
+  .contact-btn {
     font-size: 0.9rem;
   }
 }

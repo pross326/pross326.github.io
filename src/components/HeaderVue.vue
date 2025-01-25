@@ -27,20 +27,19 @@ export default {
   },
   methods: {
     scrollToSection(id) {
-      // Locate the section based on the ID within the entire app
       const section = document.querySelector(`[id="${id}"]`);
       if (section) {
         const headerHeight = document.querySelector(".floating-header").offsetHeight;
-        const sectionPosition = section.offsetTop - headerHeight; // Adjust for sticky header
+        const sectionPosition = section.offsetTop - headerHeight;
         window.scrollTo({
           top: sectionPosition,
-          behavior: "smooth", // Smooth scrolling
+          behavior: "smooth",
         });
       }
     },
     handleScroll() {
       const currentScrollY = window.scrollY;
-      this.isHidden = currentScrollY > this.lastScrollY && currentScrollY > 100; // Hide header on scroll down
+      this.isHidden = currentScrollY > this.lastScrollY && currentScrollY > 100;
       this.lastScrollY = currentScrollY;
     },
   },
@@ -50,11 +49,11 @@ export default {
 <style scoped>
 .floating-header {
   position: fixed;
-  top: 5%;
+  top: 3%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.95); /* Darker blue tone */
+  background: rgba(15, 23, 42, 0.95);
   border-radius: 50px;
   padding: 10px 30px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
@@ -74,7 +73,7 @@ export default {
   font-size: 1.8rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #2563eb; /* Vibrant blue */
+  color: #2563eb;
   letter-spacing: 0.1em;
 }
 
@@ -84,7 +83,7 @@ export default {
 }
 
 .nav-links a {
-  color: #e2e8f0; /* Light text */
+  color: #e2e8f0;
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
@@ -93,7 +92,7 @@ export default {
 }
 
 .nav-links a:hover {
-  color: #2563eb; /* Subtle accent */
+  color: #2563eb;
   transform: translateY(-2px);
 }
 </style>
