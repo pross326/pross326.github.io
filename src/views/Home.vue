@@ -54,8 +54,8 @@ export default {
     return {
       showImage: true,
       windowWidth: window.innerWidth,
-      fullBodyImage: new URL('/public/headshot9.png', import.meta.url).href,
-      headshotImage: new URL('/public/headshot4.png', import.meta.url).href,
+      fullBodyImage: new URL('/headshot9.png', import.meta.url).href,
+      headshotImage: new URL('/headshot4.png', import.meta.url).href,
     };
   },
   created() {
@@ -108,6 +108,7 @@ export default {
   padding: 20px;
   font-family: "Inter", sans-serif;
   padding-top: 4em;
+  background: linear-gradient(135deg, #0f172a, #1e293b)
 }
 
 .main-card {
@@ -128,7 +129,6 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: left;
-  gap: 10px;
   justify-content: center;
   margin: auto;
 }

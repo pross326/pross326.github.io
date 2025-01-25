@@ -1,12 +1,12 @@
 <template>
-  <v-container id="projects" fluid>
-    <div style="width: 85vw; margin: auto">
+  <v-container id="projects" style="padding-bottom: 5em; background: linear-gradient(135deg, #0f172a, #1e293b)" fluid>
+    <div style="width: 85vw; margin: auto; padding-top: 2em;">
       <h2 class="section-title">Featured Projects</h2>
       <v-row>
         <!-- First Project: Memento Mori -->
         <v-col cols="12" md="6">
           <v-card class="info-card">
-            <v-img src="/public/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
+            <v-img src="/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
             <v-card-text>
               <h3 class="project-title">Memento Mori</h3>
               <p class="project-description">
@@ -21,10 +21,11 @@
             </v-card-actions>
           </v-card>
         </v-col>
+
         <!-- Second Project: Accessibility Tool -->
         <v-col cols="12" md="6">
           <v-card class="info-card">
-            <v-img src="/public/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
+            <v-img src="/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
             <v-card-text>
               <h3 class="project-title">Accessibility Tool</h3>
               <p class="project-description">
@@ -40,23 +41,30 @@
           </v-card>
         </v-col>
       </v-row>
+
+      <!-- Instagram Embed -->
       <v-row>
         <v-col cols="12">
           <v-card class="info-card">
             <v-card-text style="width: 80%; padding: 10px 0px;">
               <h3 class="project-title blurb-title">Showcasing Comedy Through Design</h3>
-              <p class="project-description  blurb-description">
+              <p class="project-description blurb-description">
                 I’m passionate about comedy and creative design. Using Figma, I'm able to combine my hobbies to create
-                eye-catching posters for upcoming
-                comedy shows,
-                helping comedians amplify their reach and connect with audiences. Below, you’ll find some of my recent
-                designs and inspirations.
+                eye-catching posters for upcoming comedy shows, helping comedians amplify their reach and connect with
+                audiences.
+                Below, you’ll find some of my recent designs and inspirations.
               </p>
             </v-card-text>
-            <div class="instagram-feed-container">
+
+            <div v-if="embedLoaded" class="instagram-feed-container">
               <blockquote class="instagram-media" :data-instgrm-permalink="instagramEmbedLink" data-instgrm-version="14"
                 style="background: #000; border: 0; margin: 12px; padding: 12px; width: 100%; border-radius: 16px; text-align: center;">
               </blockquote>
+            </div>
+            <div v-else class="error-message">
+              <p>
+                Instagram content may not load due to an ad blocker or VPN. Please disable them to view the embed.
+              </p>
             </div>
           </v-card>
         </v-col>
@@ -70,18 +78,32 @@ export default {
   data() {
     return {
       instagramEmbedLink: "https://www.instagram.com/upcomingcomedyshows/?utm_source=ig_embed&amp;utm_campaign=loading", // Replace with your Instagram post link
+      embedLoaded: true,
     };
   },
   methods: {
     goToProject(link) {
       window.open(link, "_blank");
-    }
+    },
+    checkInstagramEmbed() {
+      // Check if the Instagram embed script has loaded
+      setTimeout(() => {
+        const embedScript = document.querySelector('script[src="//www.instagram.com/embed.js"]');
+        if (!embedScript || !window.instgrm) {
+          this.embedLoaded = false;
+        }
+      }, 4000);
+    },
   },
   mounted() {
+    // Dynamically load Instagram embed.js script
     const script = document.createElement("script");
     script.setAttribute("async", "");
     script.src = "//www.instagram.com/embed.js";
     document.body.appendChild(script);
+
+    // Check if the embed is successful
+    this.checkInstagramEmbed();
   },
 };
 </script>
@@ -112,8 +134,10 @@ export default {
   text-align: left;
 }
 
-.info-card:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+.error-message {
+  color: #ff6a00;
+  text-align: center;
+  margin: 20px 0;
 }
 
 /* Project Image */
@@ -132,10 +156,6 @@ export default {
   justify-content: center;
   align-content: center;
   border: 4px solid black;
-}
-
-.instagram-iframe {
-  border-radius: 8px;
 }
 
 /* Button Styling */
@@ -171,33 +191,5 @@ export default {
   color: #f3f4f6;
   margin-bottom: 20px;
   text-align: left;
-}
-
-#projects {
-  min-height: 100vh;
-  background: #101820;
-  padding: 20px;
-  font-family: "Inter", sans-serif;
-  padding-top: 4em;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .project-title {
-    font-size: 1.5rem;
-  }
-
-  .project-description {
-    font-size: 0.9rem;
-  }
-
-  .project-image {
-    height: 150px;
-  }
-
-  .cta-btn {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-  <v-container class="contact-container" fluid>
-
+  <v-container class="contact-container" style="display: flex; justify-content: center; flex-direction: column;" fluid>
+    <h2 class="headline">Contact</h2>
     <v-row align="center" style="display: flex; justify-content: center; flex-direction: column;">
-      <h2 class="headline">Contact</h2>
-
       <v-col cols="12" md="10" class="text-content">
         <v-card class="info-card" id="contact">
           <div class="card-styling">
@@ -79,8 +77,9 @@ export default {
   color: #e2e8f0;
   padding: 20px;
   font-family: "Inter", sans-serif;
-  padding-top: 4em;
+  padding-top: 3em;
   margin: auto;
+  background: linear-gradient(135deg, #0f172a, #1e293b)
 }
 
 .text-content {
@@ -113,7 +112,6 @@ export default {
   font-size: 2.7rem;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 10px;
 }
 
 .subheading {
