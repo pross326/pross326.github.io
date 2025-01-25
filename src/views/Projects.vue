@@ -1,67 +1,67 @@
 <template>
   <v-container id="projects" fluid>
-    <h2 class="section-title">Featured Projects</h2>
-    <v-row>
-      <!-- First Project: Memento Mori -->
-      <v-col cols="12" md="6">
-        <v-card class="info-card">
-          <v-img src="/src/assets/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
-          <v-card-text>
-            <h3 class="project-title">Memento Mori</h3>
-            <p class="project-description">
-              A Vue.js app inspired by Stoic philosophy. Built with Vue and
-              focused on promoting mindfulness and productivity.
-            </p>
-          </v-card-text>
-          <v-card-actions style="width: 100%">
-            <v-btn class="cta-btn" @click="goToProject('https://paulross-memento-mori.netlify.app/')" block>
-              Visit
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-
-      <!-- Second Project: Accessibility Tool -->
-      <v-col cols="12" md="6">
-        <v-card class="info-card">
-          <v-img src="/src/assets/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
-          <v-card-text>
-            <h3 class="project-title">Accessibility Tool</h3>
-            <p class="project-description">
-              A tool that evaluates web accessibility and suggests
-              improvements for compliance with WCAG guidelines.
-            </p>
-          </v-card-text>
-          <v-card-actions style="width: 100%">
-            <v-btn class="cta-btn" @click="goToProject('https://paulrossdev.github.io/index.html')" block>
-              Visit
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <v-card class="info-card">
-          <v-card-text style="width: 80%; padding: 10px 0px;">
-            <h3 class="project-title blurb-title">Showcasing Comedy Through Design</h3>
-            <p class="project-description  blurb-description">
-              I’m passionate about comedy and creative design. Using Figma, I'm able to combine my hobbies to create
-              eye-catching posters for upcoming
-              comedy shows,
-              helping comedians amplify their reach and connect with audiences. Below, you’ll find some of my recent
-              designs and inspirations.
-            </p>
-          </v-card-text>
-          <div class="instagram-feed-container">
-            <blockquote class="instagram-media" :data-instgrm-permalink="instagramEmbedLink" data-instgrm-version="14"
-              style="background: #000; border: 0; margin: 12px; padding: 12px; width: 100%; border-radius: 16px; text-align: center;">
-            </blockquote>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-
+    <div style="width: 85vw; margin: auto">
+      <h2 class="section-title">Featured Projects</h2>
+      <v-row>
+        <!-- First Project: Memento Mori -->
+        <v-col cols="12" md="6">
+          <v-card class="info-card">
+            <v-img src="/src/assets/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
+            <v-card-text>
+              <h3 class="project-title">Memento Mori</h3>
+              <p class="project-description">
+                A Vue.js app inspired by Stoic philosophy. Built with Vue and
+                focused on promoting mindfulness and productivity.
+              </p>
+            </v-card-text>
+            <v-card-actions style="width: 100%">
+              <v-btn class="cta-btn" @click="goToProject('https://paulross-memento-mori.netlify.app/')" block>
+                Visit
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <!-- Second Project: Accessibility Tool -->
+        <v-col cols="12" md="6">
+          <v-card class="info-card">
+            <v-img src="/src/assets/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
+            <v-card-text>
+              <h3 class="project-title">Accessibility Tool</h3>
+              <p class="project-description">
+                A tool that evaluates web accessibility and suggests
+                improvements for compliance with WCAG guidelines.
+              </p>
+            </v-card-text>
+            <v-card-actions style="width: 100%">
+              <v-btn class="cta-btn" @click="goToProject('https://paulrossdev.github.io/index.html')" block>
+                Visit
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-card class="info-card">
+            <v-card-text style="width: 80%; padding: 10px 0px;">
+              <h3 class="project-title blurb-title">Showcasing Comedy Through Design</h3>
+              <p class="project-description  blurb-description">
+                I’m passionate about comedy and creative design. Using Figma, I'm able to combine my hobbies to create
+                eye-catching posters for upcoming
+                comedy shows,
+                helping comedians amplify their reach and connect with audiences. Below, you’ll find some of my recent
+                designs and inspirations.
+              </p>
+            </v-card-text>
+            <div class="instagram-feed-container">
+              <blockquote class="instagram-media" :data-instgrm-permalink="instagramEmbedLink" data-instgrm-version="14"
+                style="background: #000; border: 0; margin: 12px; padding: 12px; width: 100%; border-radius: 16px; text-align: center;">
+              </blockquote>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -175,8 +175,11 @@ export default {
 }
 
 #projects {
-  padding-top: 50px;
-  width: 85vw;
+  min-height: 100vh;
+  background: #101820;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  padding-top: 4em;
 }
 
 /* Responsive Design */

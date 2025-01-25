@@ -1,11 +1,13 @@
 <template>
   <v-container class="contact-container" id="contact" fluid>
-    <v-row align="center" style="display: flex; justify-content: center;">
+
+    <v-row align="center" style="display: flex; justify-content: center; flex-direction: column;">
+      <h2 class="headline">Contact</h2>
+
       <v-col cols="12" md="10" class="text-content">
         <v-card class="info-card">
           <div class="card-styling">
             <div style="margin-left: 16px;">
-              <h1 class="headline">Get in Touch</h1>
               <p class="subheading">
                 Have a question or want to work together? Let me know below!
               </p>
@@ -68,7 +70,6 @@ export default {
 </script>
 
 <style scoped>
-/* General Styling */
 .contact-container {
   min-height: 100vh;
   display: flex;
@@ -108,13 +109,11 @@ export default {
   text-align: center;
 }
 
-/* Header Styles */
 .headline {
   font-size: 2.7rem;
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 10px;
-  border-bottom: 3px solid #ffffff;
 }
 
 .subheading {
@@ -124,7 +123,6 @@ export default {
   margin-bottom: 20px;
 }
 
-/* Form Fields */
 .input-field {
   margin-bottom: 20px;
 }
