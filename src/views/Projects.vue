@@ -6,7 +6,7 @@
         <!-- First Project: Memento Mori -->
         <v-col cols="12" md="6">
           <v-card class="info-card">
-            <v-img src="/src/assets/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
+            <v-img src="/public/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
             <v-card-text>
               <h3 class="project-title">Memento Mori</h3>
               <p class="project-description">
@@ -24,7 +24,7 @@
         <!-- Second Project: Accessibility Tool -->
         <v-col cols="12" md="6">
           <v-card class="info-card">
-            <v-img src="/src/assets/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
+            <v-img src="/public/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
             <v-card-text>
               <h3 class="project-title">Accessibility Tool</h3>
               <p class="project-description">

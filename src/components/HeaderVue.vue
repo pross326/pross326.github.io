@@ -1,7 +1,7 @@
 <template>
   <div class="floating-header" :class="{ hidden: isHidden }">
     <div class="logo">
-      <img src="/src/assets/logo2.png" alt="PR Logo" />
+      <img src="/public/logo2.png" alt="PR Logo" />
     </div>
     <nav class="nav-links">
       <a @click.prevent="scrollToSection('home')">Home</a>

@@ -54,8 +54,8 @@ export default {
     return {
       showImage: true,
       windowWidth: window.innerWidth,
-      fullBodyImage: new URL('../assets/headshot9.png', import.meta.url).href,
-      headshotImage: new URL('../assets/headshot4.png', import.meta.url).href,
+      fullBodyImage: new URL('/public/headshot9.png', import.meta.url).href,
+      headshotImage: new URL('/public/headshot4.png', import.meta.url).href,
     };
   },
   created() {
