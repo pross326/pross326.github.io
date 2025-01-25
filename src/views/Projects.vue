@@ -128,7 +128,6 @@ export default {
 /* Instagram Feed */
 .instagram-feed-container {
   width: 80%;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-content: center;

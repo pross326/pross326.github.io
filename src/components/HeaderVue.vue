@@ -1,7 +1,7 @@
 <template>
   <div class="floating-header" :class="{ hidden: isHidden }">
     <div class="logo">
-      <span>PR</span>
+      <img src="/src/assets/logo2.png" alt="PR Logo" />
     </div>
     <nav class="nav-links">
       <a @click.prevent="scrollToSection('home')">Home</a>
@@ -69,12 +69,9 @@ export default {
   opacity: 0;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #2563eb;
-  letter-spacing: 0.1em;
+.logo img {
+  width: 40px;
+  padding-top: 5px;
 }
 
 .nav-links {

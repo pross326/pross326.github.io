@@ -4,6 +4,7 @@
       <!-- Info Section -->
       <v-col cols="12" md="10" class="text-content">
         <v-card class="info-card">
+
           <div class="card-styling">
             <div v-if="isMobile" style="display: flex; justify-self: start; padding-left: 25px;">
               <v-img :src="fullBodyImage" alt="Paul Ross" class="header-image" />
@@ -33,7 +34,7 @@
                 </v-btn>
               </div>
               <v-btn class="contact-btn" @click="scrollToContact" block>
-                Get in Touch
+                Contact
               </v-btn>
             </div>
             <div v-if="!isMobile" style="display: flex; justify-self: start; padding-left: 25px;">
@@ -53,7 +54,7 @@ export default {
     return {
       showImage: true,
       windowWidth: window.innerWidth,
-      fullBodyImage: new URL('../assets/headshot4.png', import.meta.url).href,
+      fullBodyImage: new URL('../assets/headshot9.png', import.meta.url).href,
       headshotImage: new URL('../assets/headshot4.png', import.meta.url).href,
     };
   },
@@ -152,10 +153,10 @@ export default {
 }
 
 .header-image {
-  width: 230px;
-  height: 230px;
+  width: 250px;
+  height: 250px;
   padding-left: 20px;
-  border-radius: 16px;
+  border-radius: 24px;
 }
 
 .headline {

@@ -1,11 +1,11 @@
 <template>
-  <v-container class="contact-container" id="contact" fluid>
+  <v-container class="contact-container" fluid>
 
     <v-row align="center" style="display: flex; justify-content: center; flex-direction: column;">
       <h2 class="headline">Contact</h2>
 
       <v-col cols="12" md="10" class="text-content">
-        <v-card class="info-card">
+        <v-card class="info-card" id="contact">
           <div class="card-styling">
             <div style="margin-left: 16px;">
               <p class="subheading">
@@ -120,7 +120,7 @@ export default {
   font-size: 1.2rem;
   font-weight: 500;
   color: #d1d5db;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .input-field {
