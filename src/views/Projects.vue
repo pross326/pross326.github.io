@@ -1,6 +1,6 @@
 <template>
-  <v-container id="projects" style="padding-bottom: 5em; background: linear-gradient(135deg, #0f172a, #1e293b)" fluid>
-    <div style="width: 85vw; margin: auto; padding-top: 2em;">
+  <v-container id="projects" fluid>
+    <div class="projects-section" style="">
       <h2 class="section-title">Featured Projects</h2>
       <v-row>
         <!-- First Project: Memento Mori -->
@@ -65,6 +65,9 @@
               <p>
                 Instagram content may not load due to an ad blocker or VPN. Please disable them to view the embed.
               </p>
+              <v-btn class="cta-btn" @click="viewInstagram" block>
+                Go To Instagram
+              </v-btn>
             </div>
           </v-card>
         </v-col>
@@ -85,8 +88,10 @@ export default {
     goToProject(link) {
       window.open(link, "_blank");
     },
+    viewInstagram() {
+      window.open(this.instagramEmbedLink, "_blank");
+    },
     checkInstagramEmbed() {
-      // Check if the Instagram embed script has loaded
       setTimeout(() => {
         const embedScript = document.querySelector('script[src="//www.instagram.com/embed.js"]');
         if (!embedScript || !window.instgrm) {
@@ -116,6 +121,17 @@ export default {
   margin-bottom: 40px;
   text-align: center;
   color: #ffffff;
+}
+
+#projects {
+  padding-bottom: 5em;
+  background: linear-gradient(135deg, #0f172a, #1e293b)
+}
+
+.projects-section {
+  width: 85vw;
+  margin: auto;
+  padding-top: 2em;
 }
 
 /* Info Card Styling */
@@ -167,7 +183,6 @@ export default {
   padding: 2px 16px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
 }
 
 .cta-btn:hover {
@@ -191,5 +206,24 @@ export default {
   color: #f3f4f6;
   margin-bottom: 20px;
   text-align: left;
+}
+
+@media (max-width: 600px) {
+  #projects {
+    width: 100vw;
+    padding: 0px !important;
+  }
+
+  .projects-section {
+    width: 100vw;
+    margin: auto;
+    padding-top: 2em;
+  }
+
+  .section-title {
+    margin: 20px 0px;
+
+  }
+
 }
 </style>

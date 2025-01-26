@@ -92,4 +92,10 @@ export default {
   color: #2563eb;
   transform: translateY(-2px);
 }
+
+@media (max-width: 600px) {
+  .floating-header {
+    top: 8%;
+  }
+}
 </style>

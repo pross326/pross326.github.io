@@ -9,7 +9,7 @@
             <div v-if="isMobile" style="display: flex; justify-self: start; padding-left: 25px;">
               <v-img :src="fullBodyImage" alt="Paul Ross" class="header-image" />
             </div>
-            <div style="margin-left: 16px;">
+            <div class="home-content">
               <h1 class="headline">
                 Paul Ross
               </h1>
@@ -153,8 +153,8 @@ export default {
 }
 
 .header-image {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   padding-left: 20px;
   border-radius: 24px;
 }
@@ -239,19 +239,33 @@ export default {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Mobile-Only Adjustments */
+.home-content {
+  margin-left: 16px;
+}
+
 /* Mobile-Only Adjustments */
 @media (max-width: 600px) {
+
+  .home-container {
+    height: 100vh
+  }
+
+  .home-content {
+    margin-left: 0px;
+  }
+
   .info-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: 100vh;
   }
 
   .info-card {
     padding: 16px;
-    /* Adjust height for better fit */
+    width: 100vw;
+    height: 100vh
   }
 
   .card-styling {
@@ -262,10 +276,9 @@ export default {
   }
 
   .header-image {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 16px;
-    /* Add spacing below the image */
+    width: 200px;
+    height: 200px;
+    margin: 24px 0px;
   }
 
   .headline {
@@ -285,14 +298,12 @@ export default {
 
   .chips-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 15px;
-    align-items: center;
+    margin-top: 20px;
   }
 
   .chip-btn {
-    width: 40%;
+    width: 47%;
     font-size: 0.9rem;
     padding: 5px;
   }
@@ -300,6 +311,7 @@ export default {
   .contact-btn {
     font-size: 0.9rem;
     margin-top: 16px;
+    width: 94% !important;
   }
 }
 </style>

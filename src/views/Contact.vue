@@ -1,5 +1,5 @@
 <template>
-  <v-container class="contact-container" style="display: flex; justify-content: center; flex-direction: column;" fluid>
+  <v-container class="contact-container" fluid>
     <h2 class="headline">Contact</h2>
     <v-row align="center" style="display: flex; justify-content: center; flex-direction: column;">
       <v-col cols="12" md="10" class="text-content">
@@ -79,7 +79,10 @@ export default {
   font-family: "Inter", sans-serif;
   padding-top: 3em;
   margin: auto;
-  background: linear-gradient(135deg, #0f172a, #1e293b)
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .text-content {
@@ -181,8 +184,21 @@ export default {
 
 /* Mobile Adjustments */
 @media (max-width: 600px) {
+
+  .info-card {
+    width: 100vw;
+    height: auto;
+    background: linear-gradient(0deg, #020917, #2563EB);
+    border-radius: 16px;
+    border: 8px solid black;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    color: #ffffff;
+  }
+
   .headline {
     font-size: 2rem;
+    padding-bottom: 1em;
   }
 
   .subheading {
