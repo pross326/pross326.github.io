@@ -84,7 +84,7 @@ export default {
       window.open("https://www.linkedin.com/in/paul-ross-ny-nc/", "_blank");
     },
     goToResume() {
-      window.open(new URL('../assets/resume2025.pdf', import.meta.url).href, "_blank");
+      window.open(new URL('../assets/PaulRossResume2025.pdf', import.meta.url).href, "_blank");
     },
     goToAndela() {
       window.open("https://client.andela.com/talent/profile/95e035e9-b743-4d4e-8fba-59405e7b8ab5", "_blank");

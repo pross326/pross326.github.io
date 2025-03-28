@@ -1,17 +1,17 @@
 <template>
   <v-container id="projects" fluid>
-    <div class="projects-section" style="">
+    <div class="projects-section">
       <h2 class="section-title">Featured Projects</h2>
       <v-row>
         <!-- First Project: Memento Mori -->
         <v-col cols="12" md="6">
-          <v-card class="info-card">
-            <v-img src="/memento-mori.png" alt="Memento Mori Logo" class="project-image"></v-img>
+          <v-card class="info-card fixed-height">
+            <v-img src="/memento-mori.png" alt="Memento Mori Logo" class="project-image" loading="lazy"></v-img>
             <v-card-text>
               <h3 class="project-title">Memento Mori</h3>
               <p class="project-description">
                 A Vue.js app inspired by Stoic philosophy. Built with Vue and
-                focused on promoting mindfulness and productivity.
+                focused on promoting mindfulness.
               </p>
             </v-card-text>
             <v-card-actions style="width: 100%">
@@ -24,8 +24,9 @@
 
         <!-- Second Project: Accessibility Tool -->
         <v-col cols="12" md="6">
-          <v-card class="info-card">
-            <v-img src="/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"></v-img>
+          <v-card class="info-card fixed-height">
+            <v-img src="/accessibility-tool.png" alt="Accessibility Tool Logo" class="project-image"
+              loading="lazy"></v-img>
             <v-card-text>
               <h3 class="project-title">Accessibility Tool</h3>
               <p class="project-description">
@@ -80,7 +81,7 @@
 export default {
   data() {
     return {
-      instagramEmbedLink: "https://www.instagram.com/upcomingcomedyshows/?utm_source=ig_embed&amp;utm_campaign=loading", // Replace with your Instagram post link
+      instagramEmbedLink: "https://www.instagram.com/upcomingcomedyshows/?utm_source=ig_embed&amp;utm_campaign=loading",
       embedLoaded: true,
     };
   },
@@ -101,20 +102,16 @@ export default {
     },
   },
   mounted() {
-    // Dynamically load Instagram embed.js script
     const script = document.createElement("script");
     script.setAttribute("async", "");
     script.src = "//www.instagram.com/embed.js";
     document.body.appendChild(script);
-
-    // Check if the embed is successful
     this.checkInstagramEmbed();
   },
 };
 </script>
 
 <style scoped>
-/* Section Styling */
 .section-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -125,7 +122,7 @@ export default {
 
 #projects {
   padding-bottom: 5em;
-  background: linear-gradient(135deg, #0f172a, #1e293b)
+  background: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
 .projects-section {
@@ -134,7 +131,6 @@ export default {
   padding-top: 2em;
 }
 
-/* Info Card Styling */
 .info-card {
   width: 100%;
   background: linear-gradient(0deg, #020917, #2563EB);
@@ -148,6 +144,14 @@ export default {
   color: #ffffff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
+  height: 100%;
+}
+
+.fixed-height {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .error-message {
@@ -156,7 +160,6 @@ export default {
   margin: 20px 0;
 }
 
-/* Project Image */
 .project-image {
   width: 100%;
   height: 250px;
@@ -165,7 +168,6 @@ export default {
   margin-bottom: 6px;
 }
 
-/* Instagram Feed */
 .instagram-feed-container {
   width: 80%;
   display: flex;
@@ -174,7 +176,6 @@ export default {
   border: 4px solid black;
 }
 
-/* Button Styling */
 .cta-btn {
   color: #ffffff;
   text-transform: uppercase;
@@ -211,7 +212,7 @@ export default {
 @media (max-width: 600px) {
   #projects {
     width: 100vw;
-    padding: 0px !important;
+    padding: 0 !important;
   }
 
   .projects-section {
@@ -221,9 +222,11 @@ export default {
   }
 
   .section-title {
-    margin: 20px 0px;
-
+    margin: 20px 0;
   }
 
+  .fixed-height {
+    min-height: unset;
+  }
 }
 </style>
