@@ -97,10 +97,10 @@ export default {
   height: auto;
   background: linear-gradient(0deg, #020917, #2563EB);
   border-radius: 16px;
-  border: 8px solid black;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 25px;
   color: #ffffff;
+  border: 2px solid black;
 }
 
 .card-styling {
@@ -131,7 +131,7 @@ export default {
 .input-field .v-input__control {
   background-color: #2d3748;
   color: #f1f5f9;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -180,6 +180,15 @@ export default {
 .location a:hover {
   color: #4098ff;
   text-decoration: underline;
+}
+
+.v-input--error:not(.v-input--disabled) .v-input__details>.v-icon,
+.v-input--error:not(.v-input--disabled) .v-input__details .v-messages,
+.v-input--error:not(.v-input--disabled) .v-input__prepend>.v-icon,
+.v-input--error:not(.v-input--disabled) .v-input__prepend .v-messages,
+.v-input--error:not(.v-input--disabled) .v-input__append>.v-icon,
+.v-input--error:not(.v-input--disabled) .v-input__append .v-messages {
+  color: blue !important;
 }
 
 /* Mobile Adjustments */

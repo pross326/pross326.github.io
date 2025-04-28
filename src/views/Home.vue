@@ -108,14 +108,12 @@ export default {
   padding: 20px;
   font-family: "Inter", sans-serif;
   padding-top: 4em;
-  background: linear-gradient(135deg, #0f172a, #1e293b)
+  background: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
 .main-card {
   width: 95%;
   border-radius: 24px;
-  border: 8px solid black;
-
   margin: auto;
   background: linear-gradient(0deg, #020917, #2563EB);
   display: flex;
@@ -147,9 +145,9 @@ export default {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 25px;
   color: #ffffff;
-  border: 8px solid rgb(0, 0, 0);
   display: flex;
   justify-content: center;
+  border: 2px solid black;
 }
 
 .header-image {
