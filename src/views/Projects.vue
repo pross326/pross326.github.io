@@ -81,8 +81,8 @@ import BeforeAfter from '/src/components/BeforeAfter.vue';
 import poster1 from '/src/assets/glassman.png';
 import poster2 from '/src/assets/goblikon.png';
 import poster3 from '/src/assets/morril.png';
-import poster4 from '/src/assets/macofsky.png';
-import poster5 from '/src/assets/virzi.png';
+import poster4 from '/src/assets/virzi.png';
+import poster5 from '/src/assets/timdillon.png';
 
 export default {
   components: { Splide, SplideSlide, BeforeAfter },
