@@ -1,48 +1,45 @@
 <template>
-  <v-app>
+  <v-app class="app-root">
     <HeaderVue />
-    <div id="app-container">
+    <v-main class="main-content">
       <Home />
+      <About />
       <Projects />
+      <Certifications />
       <Contact />
-    </div>
+    </v-main>
+    <FooterVue />
   </v-app>
 </template>
 
 <script>
 import HeaderVue from "./components/HeaderVue.vue";
 import Home from "./views/Home.vue";
+import About from "./views/About.vue";
 import Projects from "./views/Projects.vue";
+import Certifications from "./views/Certifications.vue";
 import Contact from "./views/Contact.vue";
+import FooterVue from "./components/FooterVue.vue";
 
 export default {
   components: {
     HeaderVue,
     Home,
+    About,
     Projects,
+    Certifications,
     Contact,
+    FooterVue,
   },
 };
 </script>
 
-<style scoped>
-#app-container {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #e2e8f0;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  scroll-behavior: smooth;
+<style>
+.app-root {
+  background: var(--bg-primary) !important;
 }
 
-section {
-  padding: 100px 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-section:not(:last-child) {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 50px;
+.main-content {
+  background: var(--bg-primary);
 }
 </style>
