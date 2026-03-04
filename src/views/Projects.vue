@@ -107,6 +107,8 @@ import poster2 from '/src/assets/goblikon.png';
 import poster3 from '/src/assets/morril.png';
 import poster4 from '/src/assets/virzi.png';
 import poster5 from '/src/assets/timdillon.png';
+import screenshotRestaurant from '/src/assets/project-restaurant-rater.png';
+import screenshotHealth from '/src/assets/project-health-ai-dashboard.png';
 
 export default {
   name: "ProjectsView",
@@ -127,7 +129,7 @@ export default {
           ],
           tech: ['Vue 3', 'Vuetify 3', 'Supabase', 'Google Places API', 'Vercel'],
           url: 'https://restaurant-rater-psi.vercel.app/',
-          screenshot: new URL('/src/assets/project-restaurant-rater.png', import.meta.url).href,
+          screenshot: screenshotRestaurant,
           imgError: false,
           icon: 'mdi-silverware-fork-knife',
           gradient: 'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
@@ -145,7 +147,7 @@ export default {
           ],
           tech: ['Vue 3', 'Vuetify 3', 'Pinia', 'Claude AI', 'ApexCharts', 'Vercel'],
           url: 'https://health-ai-dashboard-eosin.vercel.app/#/',
-          screenshot: new URL('/src/assets/project-health-ai-dashboard.png', import.meta.url).href,
+          screenshot: screenshotHealth,
           imgError: false,
           icon: 'mdi-heart-pulse',
           gradient: 'linear-gradient(135deg, #10b981 0%, #6366f1 100%)',
